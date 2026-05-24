@@ -1,0 +1,65 @@
+{
+  "id": "answered_medication_d2n001",
+  "source": "Derived from atlas/data/challenge_data/train/aci/D2N001.json around line_0046-line_0049.",
+  "utterances": [
+    {
+      "id": "line_0045",
+      "speaker": "doctor",
+      "text": "okay . do you have any questions ?"
+    },
+    {
+      "id": "line_0046",
+      "speaker": "patient",
+      "text": "can i take all my pills at the same time ?"
+    },
+    {
+      "id": "line_0048",
+      "speaker": "patient",
+      "text": "because i've been trying to take them at different times of the day."
+    },
+    {
+      "id": "line_0049",
+      "speaker": "doctor",
+      "text": "you can take them all at the same time."
+    }
+  ],
+  "annotations": [
+    {
+      "utterance_id": "line_0046",
+      "relevant": true,
+      "detail_list": [
+        {
+          "type": "question",
+          "summary": "The patient asks if she can take all her medications at the same time."
+        }
+      ]
+    },
+    {
+      "utterance_id": "line_0048",
+      "relevant": true,
+      "detail_list": [
+        {
+          "type": "detail",
+          "summary": "The patient has been trying to take her medications at different times of day."
+        }
+      ]
+    },
+    {
+      "utterance_id": "line_0049",
+      "relevant": true,
+      "detail_list": [
+        {
+          "type": "detail",
+          "summary": "The doctor confirms the patient can take all medications at the same time."
+        }
+      ]
+    }
+  ],
+  "expected_questions": [
+    {
+      "utterance_id": "line_0046",
+      "expected_status": "answered",
+      "expected_answer_utterance_id": "line_0049"
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "id": "ambiguous_unanswered_shortness_d2n015",
+  "source": "Derived from atlas/data/challenge_data/train/aci/D2N015.json around line_0007-line_0011.",
+  "utterances": [
+    {
+      "id": "line_0005",
+      "speaker": "patient",
+      "text": "there are times when i have palpitations and a little shortness of breath."
+    },
+    {
+      "id": "line_0007",
+      "speaker": "patient",
+      "text": "i don't know if it's got to do with the back pain."
+    },
+    {
+      "id": "line_0008",
+      "speaker": "doctor",
+      "text": "right."
+    },
+    {
+      "id": "line_0010",
+      "speaker": "doctor",
+      "text": "have you changed lifestyle, like exercising more or having allergies?"
+    },
+    {
+      "id": "line_0011",
+      "speaker": "patient",
+      "text": "probably exercising more."
+    }
+  ],
+  "annotations": [
+    {
+      "utterance_id": "line_0005",
+      "relevant": true,
+      "detail_list": [
+        {
+          "type": "detail",
+          "summary": "The patient reports shortness of breath and palpitations during mild exercise or walking."
+        }
+      ]
+    },
+    {
+      "utterance_id": "line_0007",
+      "relevant": true,
+      "detail_list": [
+        {
+          "type": "question",
+          "summary": "The patient asks if her shortness of breath is related to her chronic back pain."
+        }
+      ]
+    },
+    {
+      "utterance_id": "line_0010",
+      "relevant": true,
+      "detail_list": [
+        {
+          "type": "question",
+          "summary": "The doctor asks if the patient has changed her lifestyle, increased exercise, or has allergies."
+        }
+      ]
+    },
+    {
+      "utterance_id": "line_0011",
+      "relevant": true,
+      "detail_list": [
+        {
+          "type": "detail",
+          "summary": "The patient reports she has been exercising more."
+        }
+      ]
+    }
+  ],
+  "expected_questions": [
+    {
+      "utterance_id": "line_0007",
+      "expected_status": "unanswered",
+      "expected_answer_utterance_id": null
+    },
+    {
+      "utterance_id": "line_0010",
+      "expected_status": "answered",
+      "expected_answer_utterance_id": "line_0011"
+    }
+  ]
+}

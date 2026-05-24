@@ -1,0 +1,50 @@
+{
+  "id": "answered_tramadol_digoxin_d2n005",
+  "source": "Derived from atlas/data/challenge_data/train/aci/D2N005.json around line_0032-line_0033.",
+  "utterances": [
+    {
+      "id": "line_0031",
+      "speaker": "doctor",
+      "text": "any questions for me ?"
+    },
+    {
+      "id": "line_0032",
+      "speaker": "patient",
+      "text": "yes . so i'm taking digoxin for afib . will the tramadol be okay with that ?"
+    },
+    {
+      "id": "line_0033",
+      "speaker": "doctor",
+      "text": "it will be okay . so you have atrial fibrillation ."
+    }
+  ],
+  "annotations": [
+    {
+      "utterance_id": "line_0032",
+      "relevant": true,
+      "detail_list": [
+        {
+          "type": "question",
+          "summary": "The patient asks about potential interactions between Tramadol and Digoxin for atrial fibrillation."
+        }
+      ]
+    },
+    {
+      "utterance_id": "line_0033",
+      "relevant": true,
+      "detail_list": [
+        {
+          "type": "detail",
+          "summary": "The doctor confirms the safety of the medication and acknowledges the patient's history of atrial fibrillation."
+        }
+      ]
+    }
+  ],
+  "expected_questions": [
+    {
+      "utterance_id": "line_0032",
+      "expected_status": "answered",
+      "expected_answer_utterance_id": "line_0033"
+    }
+  ]
+}
