@@ -1,0 +1,353 @@
+{
+  "generated_from": {
+    "reports": [
+      "/Users/markov/Desktop/atlas_qlora_results/atlas_qlora_3/eval_report_valid.json",
+      "/Users/markov/Desktop/atlas_qlora_results/atlas_qlora_3/eval_report_test1.json",
+      "/Users/markov/Desktop/atlas_qlora_results/atlas_qlora_3/eval_report_test2.json",
+      "/Users/markov/Desktop/atlas_qlora_results/atlas_qlora_3/eval_report_test3.json"
+    ]
+  },
+  "method": "Gold and prediction first_type recovered from eval_report per_example gold/pred_raw. Existing PNG was not used.",
+  "known_limitations": [
+    "This intentionally matches eval_qlora.py first_type-only evaluator; multi-detail outputs beyond detail_list[0] are not evaluated.",
+    "eval_report per_example gold/pred_raw strings are truncated to 300 chars, but first type appears before summary text.",
+    "Trust check: extracted gold supports match eval_report summary supports exactly for every split.",
+    "Invalid predicted labels are excluded from chart axes and reported separately."
+  ],
+  "n_total": 7567,
+  "classes_in_chart": [
+    "irrelevant",
+    "detail",
+    "question",
+    "follow_up",
+    "social_history",
+    "agenda_item",
+    "medication",
+    "question_unanswered"
+  ],
+  "gold_counts": {
+    "irrelevant": 3815,
+    "detail": 1916,
+    "question": 1084,
+    "follow_up": 240,
+    "social_history": 221,
+    "agenda_item": 205,
+    "medication": 86,
+    "question_unanswered": 0
+  },
+  "pred_counts": {
+    "irrelevant": 3879,
+    "detail": 1911,
+    "question": 1132,
+    "follow_up": 275,
+    "social_history": 157,
+    "agenda_item": 147,
+    "medication": 65,
+    "question_unanswered": 0
+  },
+  "invalid_pred_counts": {
+    "social_support": 1
+  },
+  "unknown_gold_counts": {},
+  "unknown_confusions": {
+    "social_history -> social_support": 1
+  },
+  "confusion_matrix_rows_gold_cols_pred": {
+    "irrelevant": {
+      "irrelevant": 3364,
+      "detail": 232,
+      "question": 166,
+      "follow_up": 36,
+      "social_history": 4,
+      "agenda_item": 11,
+      "medication": 2,
+      "question_unanswered": 0
+    },
+    "detail": {
+      "irrelevant": 298,
+      "detail": 1543,
+      "question": 22,
+      "follow_up": 30,
+      "social_history": 13,
+      "agenda_item": 4,
+      "medication": 6,
+      "question_unanswered": 0
+    },
+    "question": {
+      "irrelevant": 136,
+      "detail": 39,
+      "question": 893,
+      "follow_up": 1,
+      "social_history": 1,
+      "agenda_item": 9,
+      "medication": 5,
+      "question_unanswered": 0
+    },
+    "follow_up": {
+      "irrelevant": 29,
+      "detail": 16,
+      "question": 2,
+      "follow_up": 188,
+      "social_history": 0,
+      "agenda_item": 2,
+      "medication": 3,
+      "question_unanswered": 0
+    },
+    "social_history": {
+      "irrelevant": 32,
+      "detail": 37,
+      "question": 8,
+      "follow_up": 0,
+      "social_history": 130,
+      "agenda_item": 13,
+      "medication": 0,
+      "question_unanswered": 0
+    },
+    "agenda_item": {
+      "irrelevant": 15,
+      "detail": 27,
+      "question": 35,
+      "follow_up": 10,
+      "social_history": 9,
+      "agenda_item": 107,
+      "medication": 2,
+      "question_unanswered": 0
+    },
+    "medication": {
+      "irrelevant": 5,
+      "detail": 17,
+      "question": 6,
+      "follow_up": 10,
+      "social_history": 0,
+      "agenda_item": 1,
+      "medication": 47,
+      "question_unanswered": 0
+    },
+    "question_unanswered": {
+      "irrelevant": 0,
+      "detail": 0,
+      "question": 0,
+      "follow_up": 0,
+      "social_history": 0,
+      "agenda_item": 0,
+      "medication": 0,
+      "question_unanswered": 0
+    }
+  },
+  "recomputed_macro_f1_first_type_8_class": 0.641897366052509,
+  "recomputed_per_class_first_type": {
+    "agenda_item": {
+      "precision": 0.7278911564625851,
+      "recall": 0.5219512195121951,
+      "f1": 0.6079545454545454,
+      "support": 205
+    },
+    "detail": {
+      "precision": 0.8074306645735218,
+      "recall": 0.8053235908141962,
+      "f1": 0.8063757512411812,
+      "support": 1916
+    },
+    "medication": {
+      "precision": 0.7230769230769231,
+      "recall": 0.5465116279069767,
+      "f1": 0.6225165562913907,
+      "support": 86
+    },
+    "social_history": {
+      "precision": 0.8280254777070064,
+      "recall": 0.5882352941176471,
+      "f1": 0.6878306878306879,
+      "support": 221
+    },
+    "follow_up": {
+      "precision": 0.6836363636363636,
+      "recall": 0.7833333333333333,
+      "f1": 0.7300970873786409,
+      "support": 240
+    },
+    "question": {
+      "precision": 0.7888692579505301,
+      "recall": 0.8238007380073801,
+      "f1": 0.805956678700361,
+      "support": 1084
+    },
+    "question_unanswered": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "support": 0
+    },
+    "irrelevant": {
+      "precision": 0.8672338231502965,
+      "recall": 0.8817824377457405,
+      "f1": 0.8744476215232649,
+      "support": 3815
+    }
+  },
+  "aggregated_summary_support_from_reports": {
+    "agenda_item": 205,
+    "detail": 1916,
+    "medication": 86,
+    "social_history": 221,
+    "follow_up": 240,
+    "question": 1084,
+    "question_unanswered": 0,
+    "irrelevant": 3815
+  },
+  "split_audit": {
+    "valid": {
+      "n": 1012,
+      "source_report": "/Users/markov/Desktop/atlas_qlora_results/atlas_qlora_3/eval_report_valid.json",
+      "summary_json_parse_rate": 1.0,
+      "recomputed_parse_rate_from_per_example": 1.0,
+      "summary_type_macro_f1": 0.6326460978718008,
+      "recomputed_type_macro_f1_from_stored_gold_pred_raw": 0.6326460978718009,
+      "macro_f1_abs_delta_vs_summary": 1.1102230246251565e-16,
+      "expected_gold_support_from_summary": {
+        "agenda_item": 31,
+        "detail": 275,
+        "medication": 9,
+        "social_history": 37,
+        "follow_up": 28,
+        "question": 152,
+        "question_unanswered": 0,
+        "irrelevant": 480
+      },
+      "extracted_gold_support_from_per_example_gold": {
+        "irrelevant": 480,
+        "social_history": 37,
+        "agenda_item": 31,
+        "detail": 275,
+        "question": 152,
+        "medication": 9,
+        "follow_up": 28
+      },
+      "gold_support_matches_summary": true,
+      "pred_support_from_per_example_pred_raw": {
+        "irrelevant": 514,
+        "social_history": 18,
+        "detail": 260,
+        "question": 162,
+        "agenda_item": 21,
+        "medication": 11,
+        "follow_up": 26
+      }
+    },
+    "test1": {
+      "n": 2032,
+      "source_report": "/Users/markov/Desktop/atlas_qlora_results/atlas_qlora_3/eval_report_test1.json",
+      "summary_json_parse_rate": 0.9985236220472441,
+      "recomputed_parse_rate_from_per_example": 0.9985236220472441,
+      "summary_type_macro_f1": 0.6419887787494137,
+      "recomputed_type_macro_f1_from_stored_gold_pred_raw": 0.6419887787494138,
+      "macro_f1_abs_delta_vs_summary": 1.1102230246251565e-16,
+      "expected_gold_support_from_summary": {
+        "agenda_item": 50,
+        "detail": 520,
+        "medication": 22,
+        "social_history": 67,
+        "follow_up": 62,
+        "question": 334,
+        "question_unanswered": 0,
+        "irrelevant": 977
+      },
+      "extracted_gold_support_from_per_example_gold": {
+        "irrelevant": 977,
+        "social_history": 67,
+        "detail": 520,
+        "question": 334,
+        "agenda_item": 50,
+        "follow_up": 62,
+        "medication": 22
+      },
+      "gold_support_matches_summary": true,
+      "pred_support_from_per_example_pred_raw": {
+        "irrelevant": 989,
+        "social_history": 50,
+        "detail": 546,
+        "question": 320,
+        "agenda_item": 40,
+        "follow_up": 70,
+        "medication": 17
+      }
+    },
+    "test2": {
+      "n": 2225,
+      "source_report": "/Users/markov/Desktop/atlas_qlora_results/atlas_qlora_3/eval_report_test2.json",
+      "summary_json_parse_rate": 0.9995505617977528,
+      "recomputed_parse_rate_from_per_example": 0.9995505617977528,
+      "summary_type_macro_f1": 0.6542485438833145,
+      "recomputed_type_macro_f1_from_stored_gold_pred_raw": 0.6542485438833145,
+      "macro_f1_abs_delta_vs_summary": 0.0,
+      "expected_gold_support_from_summary": {
+        "agenda_item": 62,
+        "detail": 574,
+        "medication": 22,
+        "social_history": 52,
+        "follow_up": 82,
+        "question": 294,
+        "question_unanswered": 0,
+        "irrelevant": 1139
+      },
+      "extracted_gold_support_from_per_example_gold": {
+        "irrelevant": 1139,
+        "social_history": 52,
+        "agenda_item": 62,
+        "question": 294,
+        "detail": 574,
+        "medication": 22,
+        "follow_up": 82
+      },
+      "gold_support_matches_summary": true,
+      "pred_support_from_per_example_pred_raw": {
+        "irrelevant": 1161,
+        "social_history": 46,
+        "agenda_item": 39,
+        "question": 316,
+        "detail": 542,
+        "follow_up": 102,
+        "medication": 19
+      }
+    },
+    "test3": {
+      "n": 2298,
+      "source_report": "/Users/markov/Desktop/atlas_qlora_results/atlas_qlora_3/eval_report_test3.json",
+      "summary_json_parse_rate": 0.9995648389904265,
+      "recomputed_parse_rate_from_per_example": 0.9995648389904265,
+      "summary_type_macro_f1": 0.6371948938994124,
+      "recomputed_type_macro_f1_from_stored_gold_pred_raw": 0.6371948938994124,
+      "macro_f1_abs_delta_vs_summary": 0.0,
+      "expected_gold_support_from_summary": {
+        "agenda_item": 62,
+        "detail": 547,
+        "medication": 33,
+        "social_history": 65,
+        "follow_up": 68,
+        "question": 304,
+        "question_unanswered": 0,
+        "irrelevant": 1219
+      },
+      "extracted_gold_support_from_per_example_gold": {
+        "irrelevant": 1219,
+        "social_history": 65,
+        "agenda_item": 62,
+        "detail": 547,
+        "question": 304,
+        "medication": 33,
+        "follow_up": 68
+      },
+      "gold_support_matches_summary": true,
+      "pred_support_from_per_example_pred_raw": {
+        "irrelevant": 1215,
+        "social_history": 43,
+        "agenda_item": 47,
+        "detail": 563,
+        "question": 334,
+        "medication": 18,
+        "follow_up": 77,
+        "social_support": 1
+      }
+    }
+  }
+}

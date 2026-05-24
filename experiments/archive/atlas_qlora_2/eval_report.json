@@ -1,0 +1,1861 @@
+{
+  "summary": {
+    "n_examples": 200,
+    "json_parse_rate": 0.92,
+    "relevance_accuracy": 0.725,
+    "type_macro_f1": 0.17841487751169832,
+    "type_per_class": {
+      "agenda_item": {
+        "precision": 0.05555555555555555,
+        "recall": 0.1,
+        "f1": 0.07142857142857142,
+        "support": 10
+      },
+      "detail": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 47
+      },
+      "medication": {
+        "precision": 0.08333333333333333,
+        "recall": 0.75,
+        "f1": 0.15,
+        "support": 4
+      },
+      "social_history": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 0
+      },
+      "follow_up": {
+        "precision": 0.16666666666666666,
+        "recall": 0.125,
+        "f1": 0.14285714285714288,
+        "support": 8
+      },
+      "question": {
+        "precision": 0.38095238095238093,
+        "recall": 0.38095238095238093,
+        "f1": 0.38095238095238093,
+        "support": 21
+      },
+      "question_unanswered": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 0
+      },
+      "irrelevant": {
+        "precision": 0.9365079365079365,
+        "recall": 0.5363636363636364,
+        "f1": 0.6820809248554914,
+        "support": 110
+      }
+    },
+    "n_summary_pairs_for_bertscore": 86
+  },
+  "per_example": [
+    {
+      "i": 0,
+      "input": "[Context]: Start of visit\n[Utterance]: [Doctor] hi , martha . how are you ?",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": false}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": true
+    },
+    {
+      "i": 1,
+      "input": "[Context]: Start of visit\n[Utterance]: [Patient] i'm doing okay . how are you ?",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": false}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": true
+    },
+    {
+      "i": 2,
+      "input": "[Context]: Start of visit\n[Utterance]: [Doctor] i'm doing okay . so , i know the nurse told you about dax . i'd like to tell dax a little bit about you , okay ?",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"social_history\", \"summary\": \"Patient shares personal experience with DAX, indicating a desire to provide additional context\"}]}",
+      "parse_ok": true,
+      "rel_correct": false,
+      "type_correct": false
+    },
+    {
+      "i": 3,
+      "input": "[Context]: Start of visit\n[Utterance]: [Patient] okay .",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"agenda_item\", \"summary\": \"Patient okay\"}]}",
+      "parse_ok": true,
+      "rel_correct": false,
+      "type_correct": false
+    },
+    {
+      "i": 4,
+      "input": "[Context]: Start of visit\n[Utterance]: [Doctor] martha is a 50-year-old female with a past medical history significant for congestive heart failure , depression and hypertension who presents for her a",
+      "gold": "{\"relevant\": true, \"detail_list\": [{\"type\": \"agenda_item\", \"summary\": \"The patient presents for an annual exam with a history of congestive heart failure, depression, and hypertension.\", \"eval_only\": {\"linked_agenda_item_id\": null, \"first_mention\": true, \"resolution_status\": \"mentioned\", \"clinical_c",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"social_history\", \"summary\": \"Patient's social history updated: significant for congestive heart failure, depression, and hypertension.\"}]}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": false
+    },
+    {
+      "i": 5,
+      "input": "[Context]: The patient presents for an annual exam with a history of congestive heart failure, depression, and hypertension.\n[Utterance]: [Patient] i'm doing well . i've been traveling a lot recently ",
+      "gold": "{\"relevant\": true, \"detail_list\": [{\"type\": \"detail\", \"summary\": \"The patient reports increased travel, recent COVID-19 vaccination, and regular hiking.\", \"eval_only\": {\"linked_agenda_item_id\": \"line_0004\", \"first_mention\": true, \"resolution_status\": \"mentioned\", \"clinical_category\": \"hpi\"}}]}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"social_history\", \"summary\": \"Recent travel to Washington state, including hiking in the Mount Baker area\"}]}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": false
+    },
+    {
+      "i": 6,
+      "input": "[Context]: The patient presents for an annual exam with a history of congestive heart failure, depression, and hypertension. | The patient reports increased travel, recent COVID-19 vaccination, and re",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": false}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": true
+    },
+    {
+      "i": 7,
+      "input": "[Context]: The patient presents for an annual exam with a history of congestive heart failure, depression, and hypertension. | The patient reports increased travel, recent COVID-19 vaccination, and re",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": false}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": true
+    },
+    {
+      "i": 8,
+      "input": "[Context]: The patient presents for an annual exam with a history of congestive heart failure, depression, and hypertension. | The patient reports increased travel, recent COVID-19 vaccination, and re",
+      "gold": "{\"relevant\": true, \"detail_list\": [{\"type\": \"agenda_item\", \"summary\": \"The doctor initiates a discussion regarding congestive heart failure and dietary habits.\", \"eval_only\": {\"linked_agenda_item_id\": \"line_0004\", \"first_mention\": true, \"resolution_status\": \"discussed\", \"clinical_category\": \"hpi\"}}]",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"agenda_item\", \"summary\": \"Congestive heart failure management and diet adherence\"}]}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": true
+    },
+    {
+      "i": 9,
+      "input": "[Context]: The patient presents for an annual exam with a history of congestive heart failure, depression, and hypertension. | The patient reports increased travel, recent COVID-19 vaccination, and re",
+      "gold": "{\"relevant\": true, \"detail_list\": [{\"type\": \"detail\", \"summary\": \"The patient reports adherence to a low-sodium diet and avoidance of salty foods.\", \"eval_only\": {\"linked_agenda_item_id\": \"line_0008\", \"first_mention\": true, \"resolution_status\": \"discussed\", \"clinical_category\": \"hpi\"}}]}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"food_allergy\", \"summary\": \"Patient reports difficulty with salty foods\"}}",
+      "parse_ok": false,
+      "rel_correct": false,
+      "type_correct": false
+    },
+    {
+      "i": 10,
+      "input": "[Context]: The patient presents for an annual exam with a history of congestive heart failure, depression, and hypertension. | The patient reports increased travel, recent COVID-19 vaccination, and re",
+      "gold": "{\"relevant\": true, \"detail_list\": [{\"type\": \"question\", \"summary\": \"The doctor asks if the patient is taking her medications.\", \"eval_only\": {\"linked_agenda_item_id\": \"line_0008\", \"first_mention\": true, \"resolution_status\": \"discussed\", \"clinical_category\": \"hpi\"}}]}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"medication\", \"summary\": \"Patient reports adherence to medication\"}]}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": false
+    },
+    {
+      "i": 11,
+      "input": "[Context]: The patient presents for an annual exam with a history of congestive heart failure, depression, and hypertension. | The patient reports increased travel, recent COVID-19 vaccination, and re",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"medication\", \"summary\": \"Patient confirms taking medications\"}]}",
+      "parse_ok": true,
+      "rel_correct": false,
+      "type_correct": false
+    },
+    {
+      "i": 12,
+      "input": "[Context]: The patient presents for an annual exam with a history of congestive heart failure, depression, and hypertension. | The patient reports increased travel, recent COVID-19 vaccination, and re",
+      "gold": "{\"relevant\": true, \"detail_list\": [{\"type\": \"question\", \"summary\": \"The doctor asks about symptoms of chest pain, shortness of breath, or leg swelling.\", \"eval_only\": {\"linked_agenda_item_id\": \"line_0008\", \"first_mention\": true, \"resolution_status\": \"discussed\", \"clinical_category\": \"ros\"}}]}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"symptom\", \"summary\": \"chest pains, shortness of breath, swelling in the legs\"}]}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": false
+    },
+    {
+      "i": 13,
+      "input": "[Context]: The patient reports increased travel, recent COVID-19 vaccination, and regular hiking. | The doctor initiates a discussion regarding congestive heart failure and dietary habits. | The patie",
+      "gold": "{\"relevant\": true, \"detail_list\": [{\"type\": \"detail\", \"summary\": \"The patient denies chest pain, shortness of breath, or leg swelling.\", \"eval_only\": {\"linked_agenda_item_id\": \"line_0012\", \"first_mention\": true, \"resolution_status\": \"resolved\", \"clinical_category\": \"ros\"}}]}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"symptom\", \"summary\": \"denies symptoms of chest pain, shortness of breath, or leg swelling\"}]}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": false
+    },
+    {
+      "i": 14,
+      "input": "[Context]: The doctor initiates a discussion regarding congestive heart failure and dietary habits. | The patient reports adherence to a low-sodium diet and avoidance of salty foods. | The doctor asks",
+      "gold": "{\"relevant\": true, \"detail_list\": [{\"type\": \"agenda_item\", \"summary\": \"The doctor initiates a discussion regarding the patient's depression and therapy.\", \"eval_only\": {\"linked_agenda_item_id\": \"line_0004\", \"first_mention\": true, \"resolution_status\": \"discussed\", \"clinical_category\": \"hpi\"}}]}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"social_history\", \"summary\": \"Patient reports on depression and therapy enrollment\"}]}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": false
+    },
+    {
+      "i": 15,
+      "input": "[Context]: The patient reports adherence to a low-sodium diet and avoidance of salty foods. | The doctor asks if the patient is taking her medications. | The doctor asks about symptoms of chest pain, ",
+      "gold": "{\"relevant\": true, \"detail_list\": [{\"type\": \"detail\", \"summary\": \"The patient reports attending weekly therapy for the past year, which has been helpful.\", \"eval_only\": {\"linked_agenda_item_id\": \"line_0014\", \"first_mention\": true, \"resolution_status\": \"discussed\", \"clinical_category\": \"hpi\"}}]}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"therapy\", \"summary\": \"Patient reports positive experience with therapy, attending sessions weekly for the past year.\"}]}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": false
+    },
+    {
+      "i": 16,
+      "input": "[Context]: The doctor asks if the patient is taking her medications. | The doctor asks about symptoms of chest pain, shortness of breath, or leg swelling. | The patient denies chest pain, shortness of",
+      "gold": "{\"relevant\": true, \"detail_list\": [{\"type\": \"question\", \"summary\": \"The doctor asks if the patient has suicidal or homicidal ideations.\", \"eval_only\": {\"linked_agenda_item_id\": \"line_0014\", \"first_mention\": true, \"resolution_status\": \"discussed\", \"clinical_category\": \"ros\"}}]}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"question\", \"summary\": \"symptoms of self-harm or suicidal thoughts\"}]}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": true
+    },
+    {
+      "i": 17,
+      "input": "[Context]: The doctor asks about symptoms of chest pain, shortness of breath, or leg swelling. | The patient denies chest pain, shortness of breath, or leg swelling. | The doctor initiates a discussio",
+      "gold": "{\"relevant\": true, \"detail_list\": [{\"type\": \"detail\", \"summary\": \"The patient denies suicidal or homicidal ideations.\", \"eval_only\": {\"linked_agenda_item_id\": \"line_0016\", \"first_mention\": true, \"resolution_status\": \"resolved\", \"clinical_category\": \"ros\"}}]}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"question_unanswered\", \"summary\": \"Suicidal or homicidal ideations\"}]}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": false
+    },
+    {
+      "i": 18,
+      "input": "[Context]: The patient denies chest pain, shortness of breath, or leg swelling. | The doctor initiates a discussion regarding the patient's depression and therapy. | The patient reports attending week",
+      "gold": "{\"relevant\": true, \"detail_list\": [{\"type\": \"agenda_item\", \"summary\": \"The doctor initiates a discussion regarding hypertension and medication adherence.\", \"eval_only\": {\"linked_agenda_item_id\": \"line_0004\", \"first_mention\": true, \"resolution_status\": \"discussed\", \"clinical_category\": \"hpi\"}}]}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"medication\", \"summary\": \"Blood pressure medication adherence\"}]}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": false
+    },
+    {
+      "i": 19,
+      "input": "[Context]: The doctor initiates a discussion regarding the patient's depression and therapy. | The patient reports attending weekly therapy for the past year, which has been helpful. | The doctor asks",
+      "gold": "{\"relevant\": true, \"detail_list\": [{\"type\": \"detail\", \"summary\": \"The patient admits to forgetting blood pressure medication and notes that stress increases her blood pressure.\", \"eval_only\": {\"linked_agenda_item_id\": \"line_0018\", \"first_mention\": true, \"resolution_status\": \"discussed\", \"clinical_ca",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"medication\", \"summary\": \"Patient is having difficulty adhering to blood pressure medication and experiencing increased blood pressure with increased stress at work.\"}]}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": false
+    },
+    {
+      "i": 20,
+      "input": "[Context]: The patient reports attending weekly therapy for the past year, which has been helpful. | The doctor asks if the patient has suicidal or homicidal ideations. | The patient denies suicidal o",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": false}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": true
+    },
+    {
+      "i": 21,
+      "input": "[Context]: The patient reports attending weekly therapy for the past year, which has been helpful. | The doctor asks if the patient has suicidal or homicidal ideations. | The patient denies suicidal o",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"stress\", \"summary\": \"Patient reports stress as a contributing factor to hypertension\"}]}",
+      "parse_ok": true,
+      "rel_correct": false,
+      "type_correct": false
+    },
+    {
+      "i": 22,
+      "input": "[Context]: The patient reports attending weekly therapy for the past year, which has been helpful. | The doctor asks if the patient has suicidal or homicidal ideations. | The patient denies suicidal o",
+      "gold": "{\"relevant\": true, \"detail_list\": [{\"type\": \"detail\", \"summary\": \"The patient reports nasal congestion from fall allergies and denies nausea, vomiting, or abdominal pain.\", \"eval_only\": {\"linked_agenda_item_id\": null, \"first_mention\": true, \"resolution_status\": \"discussed\", \"clinical_category\": \"ros",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"social_history\", \"summary\": \"Patient denies suicidal or homicidal ideations, but discusses stress and its impact on blood pressure.\"}]}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": false
+    },
+    {
+      "i": 23,
+      "input": "[Context]: The doctor asks if the patient has suicidal or homicidal ideations. | The patient denies suicidal or homicidal ideations. | The doctor initiates a discussion regarding hypertension and medi",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"question_unanswered\", \"summary\": \"Suicidal or homicidal ideations\"}]}",
+      "parse_ok": true,
+      "rel_correct": false,
+      "type_correct": false
+    },
+    {
+      "i": 24,
+      "input": "[Context]: The doctor asks if the patient has suicidal or homicidal ideations. | The patient denies suicidal or homicidal ideations. | The doctor initiates a discussion regarding hypertension and medi",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"agenda_item\", \"summary\": \"Physical exam scheduled\"}]}",
+      "parse_ok": true,
+      "rel_correct": false,
+      "type_correct": false
+    },
+    {
+      "i": 25,
+      "input": "[Context]: The doctor asks if the patient has suicidal or homicidal ideations. | The patient denies suicidal or homicidal ideations. | The doctor initiates a discussion regarding hypertension and medi",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": false}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": true
+    },
+    {
+      "i": 26,
+      "input": "[Context]: The doctor asks if the patient has suicidal or homicidal ideations. | The patient denies suicidal or homicidal ideations. | The doctor initiates a discussion regarding hypertension and medi",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"medication\", \"summary\": \"Patient's blood pressure is elevated, doctor suggests increasing medication adherence to control it\"}]}",
+      "parse_ok": true,
+      "rel_correct": false,
+      "type_correct": false
+    },
+    {
+      "i": 27,
+      "input": "[Context]: The doctor asks if the patient has suicidal or homicidal ideations. | The patient denies suicidal or homicidal ideations. | The doctor initiates a discussion regarding hypertension and medi",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": false}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": true
+    },
+    {
+      "i": 28,
+      "input": "[Context]: The doctor asks if the patient has suicidal or homicidal ideations. | The patient denies suicidal or homicidal ideations. | The doctor initiates a discussion regarding hypertension and medi",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"agenda_item\", \"summary\": \"physical examination of heart and lungs\"}]}",
+      "parse_ok": true,
+      "rel_correct": false,
+      "type_correct": false
+    },
+    {
+      "i": 29,
+      "input": "[Context]: The doctor asks if the patient has suicidal or homicidal ideations. | The patient denies suicidal or homicidal ideations. | The doctor initiates a discussion regarding hypertension and medi",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": false}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": true
+    },
+    {
+      "i": 30,
+      "input": "[Context]: The doctor asks if the patient has suicidal or homicidal ideations. | The patient denies suicidal or homicidal ideations. | The doctor initiates a discussion regarding hypertension and medi",
+      "gold": "{\"relevant\": true, \"detail_list\": [{\"type\": \"detail\", \"summary\": \"Physical exam reveals a 3/6 systolic ejection murmur and 1+ pitting edema in the lower extremities.\", \"eval_only\": {\"linked_agenda_item_id\": null, \"first_mention\": true, \"resolution_status\": \"discussed\", \"clinical_category\": \"physical",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"agenda_item\", \"summary\": \"Physical examination findings: systolic ejection murmur and pitting edema in lower extremities\"}]}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": false
+    },
+    {
+      "i": 31,
+      "input": "[Context]: The patient denies suicidal or homicidal ideations. | The doctor initiates a discussion regarding hypertension and medication adherence. | The patient admits to forgetting blood pressure me",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"agenda_item\", \"summary\": \"Patient acknowledges the discussion on hypertension and medication adherence\"}]}",
+      "parse_ok": true,
+      "rel_correct": false,
+      "type_correct": false
+    },
+    {
+      "i": 32,
+      "input": "[Context]: The patient denies suicidal or homicidal ideations. | The doctor initiates a discussion regarding hypertension and medication adherence. | The patient admits to forgetting blood pressure me",
+      "gold": "{\"relevant\": true, \"detail_list\": [{\"type\": \"detail\", \"summary\": \"Echocardiogram results show a 45% ejection fraction and mitral regurgitation.\", \"eval_only\": {\"linked_agenda_item_id\": null, \"first_mention\": true, \"resolution_status\": \"discussed\", \"clinical_category\": \"assessment\"}}]}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"agenda_item\", \"summary\": \"Echocardiogram results: low pumping function (45%) and mitral regurgitation\"}]}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": false
+    },
+    {
+      "i": 33,
+      "input": "[Context]: The doctor initiates a discussion regarding hypertension and medication adherence. | The patient admits to forgetting blood pressure medication and notes that stress increases her blood pre",
+      "gold": "{\"relevant\": true, \"detail_list\": [{\"type\": \"detail\", \"summary\": \"The doctor notes elevated cholesterol on the previous lipid panel and plans to repeat the test.\", \"eval_only\": {\"linked_agenda_item_id\": null, \"first_mention\": true, \"resolution_status\": \"discussed\", \"clinical_category\": \"plan\"}}]}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"lifestyle\", \"summary\": \"Patient's lipid panel results were discussed and a repeat test is scheduled to monitor progress on diet changes.\"}]}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": false
+    },
+    {
+      "i": 34,
+      "input": "[Context]: The patient admits to forgetting blood pressure medication and notes that stress increases her blood pressure. | The patient reports nasal congestion from fall allergies and denies nausea, ",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"medication\", \"summary\": \"Forgetting blood pressure medication\"}]}",
+      "parse_ok": true,
+      "rel_correct": false,
+      "type_correct": false
+    },
+    {
+      "i": 35,
+      "input": "[Context]: The patient admits to forgetting blood pressure medication and notes that stress increases her blood pressure. | The patient reports nasal congestion from fall allergies and denies nausea, ",
+      "gold": "{\"relevant\": true, \"detail_list\": [{\"type\": \"medication\", \"summary\": \"The doctor increases lisinopril to 40 mg daily and initiates Lasix 20 mg daily.\", \"eval_only\": {\"linked_agenda_item_id\": \"line_0008\", \"first_mention\": true, \"resolution_status\": \"discussed\", \"clinical_category\": \"medication\"}}]}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"medication\", \"summary\": \"Increase lisinopril to 40mg/day and start lasix 20mg/day for congestive heart failure and high blood pressure, with a focus on diet management.\"}]}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": true
+    },
+    {
+      "i": 36,
+      "input": "[Context]: The patient reports nasal congestion from fall allergies and denies nausea, vomiting, or abdominal pain. | Physical exam reveals a 3/6 systolic ejection murmur and 1+ pitting edema in the l",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"follow_up\", \"summary\": \"Patient is okay\"}]}",
+      "parse_ok": true,
+      "rel_correct": false,
+      "type_correct": false
+    },
+    {
+      "i": 37,
+      "input": "[Context]: The patient reports nasal congestion from fall allergies and denies nausea, vomiting, or abdominal pain. | Physical exam reveals a 3/6 systolic ejection murmur and 1+ pitting edema in the l",
+      "gold": "{\"relevant\": true, \"detail_list\": [{\"type\": \"follow_up\", \"summary\": \"The doctor orders a repeat echocardiogram.\", \"eval_only\": {\"linked_agenda_item_id\": \"line_0008\", \"first_mention\": true, \"resolution_status\": \"discussed\", \"clinical_category\": \"plan\"}}]}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"agenda_item\", \"summary\": \"Repeat echocardiogram\"}]}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": false
+    },
+    {
+      "i": 38,
+      "input": "[Context]: Physical exam reveals a 3/6 systolic ejection murmur and 1+ pitting edema in the lower extremities. | Echocardiogram results show a 45% ejection fraction and mitral regurgitation. | The doc",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"agenda_item\", \"summary\": \"Follow-up on echocardiogram results and patient's condition\"}]}",
+      "parse_ok": true,
+      "rel_correct": false,
+      "type_correct": false
+    },
+    {
+      "i": 39,
+      "input": "[Context]: Physical exam reveals a 3/6 systolic ejection murmur and 1+ pitting edema in the lower extremities. | Echocardiogram results show a 45% ejection fraction and mitral regurgitation. | The doc",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": false}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": true
+    },
+    {
+      "i": 40,
+      "input": "[Context]: Physical exam reveals a 3/6 systolic ejection murmur and 1+ pitting edema in the lower extremities. | Echocardiogram results show a 45% ejection fraction and mitral regurgitation. | The doc",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": false}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": true
+    },
+    {
+      "i": 41,
+      "input": "[Context]: Physical exam reveals a 3/6 systolic ejection murmur and 1+ pitting edema in the lower extremities. | Echocardiogram results show a 45% ejection fraction and mitral regurgitation. | The doc",
+      "gold": "{\"relevant\": true, \"detail_list\": [{\"type\": \"follow_up\", \"summary\": \"The doctor instructs the patient to take lisinopril as directed and monitor blood pressure at home for one week.\", \"eval_only\": {\"linked_agenda_item_id\": \"line_0018\", \"first_mention\": true, \"resolution_status\": \"discussed\", \"clinic",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"agenda_item\", \"summary\": \"Hypertension management: increase lisinopril to 40mg daily, initiate Lasix 20mg daily, and monitor blood pressure daily for 1 week to assess control and potential need for additional medication.\"}]}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": false
+    },
+    {
+      "i": 42,
+      "input": "[Context]: Echocardiogram results show a 45% ejection fraction and mitral regurgitation. | The doctor notes elevated cholesterol on the previous lipid panel and plans to repeat the test. | The doctor ",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"follow_up\", \"summary\": \"Patient is adhering to medication regimen and monitoring blood pressure at home.\"}]}",
+      "parse_ok": true,
+      "rel_correct": false,
+      "type_correct": false
+    },
+    {
+      "i": 43,
+      "input": "[Context]: Echocardiogram results show a 45% ejection fraction and mitral regurgitation. | The doctor notes elevated cholesterol on the previous lipid panel and plans to repeat the test. | The doctor ",
+      "gold": "{\"relevant\": true, \"detail_list\": [{\"type\": \"follow_up\", \"summary\": \"The doctor notes the patient is due for a mammogram and will schedule it.\", \"eval_only\": {\"linked_agenda_item_id\": null, \"first_mention\": true, \"resolution_status\": \"discussed\", \"clinical_category\": \"plan\"}}]}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"question\", \"summary\": \"Annual exam and mammogram scheduled\"}]}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": false
+    },
+    {
+      "i": 44,
+      "input": "[Context]: The doctor notes elevated cholesterol on the previous lipid panel and plans to repeat the test. | The doctor increases lisinopril to 40 mg daily and initiates Lasix 20 mg daily. | The docto",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": false}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": true
+    },
+    {
+      "i": 45,
+      "input": "[Context]: The doctor notes elevated cholesterol on the previous lipid panel and plans to repeat the test. | The doctor increases lisinopril to 40 mg daily and initiates Lasix 20 mg daily. | The docto",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"question\", \"summary\": \"questions about the treatment plan\"}]}",
+      "parse_ok": true,
+      "rel_correct": false,
+      "type_correct": false
+    },
+    {
+      "i": 46,
+      "input": "[Context]: The doctor notes elevated cholesterol on the previous lipid panel and plans to repeat the test. | The doctor increases lisinopril to 40 mg daily and initiates Lasix 20 mg daily. | The docto",
+      "gold": "{\"relevant\": true, \"detail_list\": [{\"type\": \"question\", \"summary\": \"The patient asks if she can take all her medications at the same time.\", \"eval_only\": {\"linked_agenda_item_id\": null, \"first_mention\": true, \"resolution_status\": \"resolved\", \"clinical_category\": \"medication\"}}]}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"medication\", \"summary\": \"Patient inquires about taking all medications at the same time\"}]}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": false
+    },
+    {
+      "i": 47,
+      "input": "[Context]: The doctor increases lisinopril to 40 mg daily and initiates Lasix 20 mg daily. | The doctor orders a repeat echocardiogram. | The doctor instructs the patient to take lisinopril as directe",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": false}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": true
+    },
+    {
+      "i": 48,
+      "input": "[Context]: The doctor increases lisinopril to 40 mg daily and initiates Lasix 20 mg daily. | The doctor orders a repeat echocardiogram. | The doctor instructs the patient to take lisinopril as directe",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"question\", \"summary\": \"Patient inquires about taking multiple medications at once\"}]}",
+      "parse_ok": true,
+      "rel_correct": false,
+      "type_correct": false
+    },
+    {
+      "i": 49,
+      "input": "[Context]: The doctor increases lisinopril to 40 mg daily and initiates Lasix 20 mg daily. | The doctor orders a repeat echocardiogram. | The doctor instructs the patient to take lisinopril as directe",
+      "gold": "{\"relevant\": true, \"detail_list\": [{\"type\": \"detail\", \"summary\": \"The doctor confirms the patient can take all medications at the same time and suggests setting an alarm.\", \"eval_only\": {\"linked_agenda_item_id\": \"line_0046\", \"first_mention\": true, \"resolution_status\": \"resolved\", \"clinical_category\"",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"medication\", \"summary\": \"Patient can take all medications at the same time, as long as they are on the same scale.\"}]}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": false
+    },
+    {
+      "i": 50,
+      "input": "[Context]: The doctor orders a repeat echocardiogram. | The doctor instructs the patient to take lisinopril as directed and monitor blood pressure at home for one week. | The doctor notes the patient ",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"follow_up\", \"summary\": \"Patient confirms the doctor's instructions\"}]}",
+      "parse_ok": true,
+      "rel_correct": false,
+      "type_correct": false
+    },
+    {
+      "i": 51,
+      "input": "[Context]: The doctor orders a repeat echocardiogram. | The doctor instructs the patient to take lisinopril as directed and monitor blood pressure at home for one week. | The doctor notes the patient ",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"medication\", \"summary\": \"Patient asks about timing of medication administration\"}]}",
+      "parse_ok": true,
+      "rel_correct": false,
+      "type_correct": false
+    },
+    {
+      "i": 52,
+      "input": "[Context]: The doctor orders a repeat echocardiogram. | The doctor instructs the patient to take lisinopril as directed and monitor blood pressure at home for one week. | The doctor notes the patient ",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"question\", \"summary\": \"Patient's request to take all medications at the same time and the doctor's response to confirm and suggest setting an alarm\"}]}",
+      "parse_ok": true,
+      "rel_correct": false,
+      "type_correct": false
+    },
+    {
+      "i": 53,
+      "input": "[Context]: The doctor orders a repeat echocardiogram. | The doctor instructs the patient to take lisinopril as directed and monitor blood pressure at home for one week. | The doctor notes the patient ",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"agenda_item\", \"summary\": \"Follow-up appointment scheduled\"}]}",
+      "parse_ok": true,
+      "rel_correct": false,
+      "type_correct": false
+    },
+    {
+      "i": 54,
+      "input": "[Context]: The doctor orders a repeat echocardiogram. | The doctor instructs the patient to take lisinopril as directed and monitor blood pressure at home for one week. | The doctor notes the patient ",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": false}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": true
+    },
+    {
+      "i": 55,
+      "input": "[Context]: The doctor orders a repeat echocardiogram. | The doctor instructs the patient to take lisinopril as directed and monitor blood pressure at home for one week. | The doctor notes the patient ",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": false}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": true
+    },
+    {
+      "i": 56,
+      "input": "[Context]: Start of visit\n[Utterance]: [Doctor] hi , andrew , how are you ?",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": false}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": true
+    },
+    {
+      "i": 57,
+      "input": "[Context]: Start of visit\n[Utterance]: [Patient] hi . good to see you .",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"social_history\", \"summary\": \"Patient's greeting\"}}",
+      "parse_ok": false,
+      "rel_correct": true,
+      "type_correct": true
+    },
+    {
+      "i": 58,
+      "input": "[Context]: Start of visit\n[Utterance]: [Doctor] it's good to see you as well . so i know that the nurse told you about dax . i'd like to tell dax a little bit about you .",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"social_history\", \"summary\": \"Patient is sharing information about themselves to the doctor\"}]}",
+      "parse_ok": true,
+      "rel_correct": false,
+      "type_correct": false
+    },
+    {
+      "i": 59,
+      "input": "[Context]: Start of visit\n[Utterance]: [Patient] sure .",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": false}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": true
+    },
+    {
+      "i": 60,
+      "input": "[Context]: Start of visit\n[Utterance]: [Doctor] okay ? so , andrew is a 62-year-old male with a past medical history significant for a kidney transplant , hypothyroidism , and arthritis , who presents",
+      "gold": "{\"relevant\": true, \"detail_list\": [{\"type\": \"agenda_item\", \"summary\": \"The patient presents for evaluation of joint pain with a history of kidney transplant, hypothyroidism, and arthritis.\", \"eval_only\": {\"linked_agenda_item_id\": null, \"first_mention\": true, \"resolution_status\": \"mentioned\", \"clinic",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"social_history\", \"summary\": \"Patient has a history of kidney transplant, hypothyroidism, and arthritis, and is now presenting with joint pain.\"}]}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": false
+    },
+    {
+      "i": 61,
+      "input": "[Context]: The patient presents for evaluation of joint pain with a history of kidney transplant, hypothyroidism, and arthritis.\n[Utterance]: [Patient] uh , so , over the the weekend , we've been movi",
+      "gold": "{\"relevant\": true, \"detail_list\": [{\"type\": \"detail\", \"summary\": \"The patient reports bilateral knee pain after moving boxes over the weekend.\", \"eval_only\": {\"linked_agenda_item_id\": \"line_0004\", \"first_mention\": true, \"resolution_status\": \"mentioned\", \"clinical_category\": \"hpi\"}}]}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"agenda_item\", \"summary\": \"Patient reports knee pain and activity exacerbation of joint pain\"}]}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": false
+    },
+    {
+      "i": 62,
+      "input": "[Context]: The patient presents for evaluation of joint pain with a history of kidney transplant, hypothyroidism, and arthritis. | The patient reports bilateral knee pain after moving boxes over the w",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"question\", \"summary\": \"Patient is asking about the severity of knee pain between the two knees\"}]}",
+      "parse_ok": true,
+      "rel_correct": false,
+      "type_correct": false
+    },
+    {
+      "i": 63,
+      "input": "[Context]: The patient presents for evaluation of joint pain with a history of kidney transplant, hypothyroidism, and arthritis. | The patient reports bilateral knee pain after moving boxes over the w",
+      "gold": "{\"relevant\": true, \"detail_list\": [{\"type\": \"detail\", \"summary\": \"The patient reports the knee pain is equal in both knees.\", \"eval_only\": {\"linked_agenda_item_id\": \"line_0004\", \"first_mention\": true, \"resolution_status\": \"mentioned\", \"clinical_category\": \"hpi\"}}]}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"symptom\", \"summary\": \"joint pain\"}]}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": false
+    },
+    {
+      "i": 64,
+      "input": "[Context]: The patient presents for evaluation of joint pain with a history of kidney transplant, hypothyroidism, and arthritis. | The patient reports bilateral knee pain after moving boxes over the w",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": false}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": true
+    },
+    {
+      "i": 65,
+      "input": "[Context]: The patient presents for evaluation of joint pain with a history of kidney transplant, hypothyroidism, and arthritis. | The patient reports bilateral knee pain after moving boxes over the w",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"symptom\", \"summary\": \"bilateral knee pain\"}]}",
+      "parse_ok": true,
+      "rel_correct": false,
+      "type_correct": false
+    },
+    {
+      "i": 66,
+      "input": "[Context]: The patient presents for evaluation of joint pain with a history of kidney transplant, hypothyroidism, and arthritis. | The patient reports bilateral knee pain after moving boxes over the w",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"question\", \"summary\": \"Injury to knee\"}}",
+      "parse_ok": false,
+      "rel_correct": true,
+      "type_correct": true
+    },
+    {
+      "i": 67,
+      "input": "[Context]: The patient presents for evaluation of joint pain with a history of kidney transplant, hypothyroidism, and arthritis. | The patient reports bilateral knee pain after moving boxes over the w",
+      "gold": "{\"relevant\": true, \"detail_list\": [{\"type\": \"detail\", \"summary\": \"The patient has a history of knee problems and attributes the current pain to the weight and repetition of moving boxes.\", \"eval_only\": {\"linked_agenda_item_id\": \"line_0004\", \"first_mention\": true, \"resolution_status\": \"mentioned\", \"c",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"question_unanswered\", \"summary\": \"Patient reports knee pain, but does not provide a clear cause or history of knee problems\"}]}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": false
+    },
+    {
+      "i": 68,
+      "input": "[Context]: The patient presents for evaluation of joint pain with a history of kidney transplant, hypothyroidism, and arthritis. | The patient reports bilateral knee pain after moving boxes over the w",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"medication\", \"summary\": \"Patient has not taken any medication for the pain\"}]}",
+      "parse_ok": true,
+      "rel_correct": false,
+      "type_correct": false
+    },
+    {
+      "i": 69,
+      "input": "[Context]: The patient presents for evaluation of joint pain with a history of kidney transplant, hypothyroidism, and arthritis. | The patient reports bilateral knee pain after moving boxes over the w",
+      "gold": "{\"relevant\": true, \"detail_list\": [{\"type\": \"detail\", \"summary\": \"The patient attempted to treat the pain with Tylenol and ice without success.\", \"eval_only\": {\"linked_agenda_item_id\": \"line_0004\", \"first_mention\": true, \"resolution_status\": \"mentioned\", \"clinical_category\": \"hpi\"}}]}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"medication\", \"summary\": \"Patient took Tylenol and iced the knees, but found no relief.\"}]}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": false
+    },
+    {
+      "i": 70,
+      "input": "[Context]: The patient presents for evaluation of joint pain with a history of kidney transplant, hypothyroidism, and arthritis. | The patient reports bilateral knee pain after moving boxes over the w",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"question\", \"summary\": \"Impact of knee pain on activities of daily living\"}]}",
+      "parse_ok": true,
+      "rel_correct": false,
+      "type_correct": false
+    },
+    {
+      "i": 71,
+      "input": "[Context]: The patient presents for evaluation of joint pain with a history of kidney transplant, hypothyroidism, and arthritis. | The patient reports bilateral knee pain after moving boxes over the w",
+      "gold": "{\"relevant\": true, \"detail_list\": [{\"type\": \"detail\", \"summary\": \"The patient reports the knee pain interrupted his sleep on Saturday night.\", \"eval_only\": {\"linked_agenda_item_id\": \"line_0004\", \"first_mention\": true, \"resolution_status\": \"mentioned\", \"clinical_category\": \"hpi\"}}]}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"symptom\", \"summary\": \"Patient reports soreness on Saturday night\"}]}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": false
+    },
+    {
+      "i": 72,
+      "input": "[Context]: The patient reports bilateral knee pain after moving boxes over the weekend. | The patient reports the knee pain is equal in both knees. | The patient has a history of knee problems and att",
+      "gold": "{\"relevant\": true, \"detail_list\": [{\"type\": \"question\", \"summary\": \"The doctor asks if the patient has fever or chills.\", \"eval_only\": {\"linked_agenda_item_id\": \"line_0004\", \"first_mention\": true, \"resolution_status\": \"mentioned\", \"clinical_category\": \"ros\"}}]}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"question\", \"summary\": \"Fever or chills\"}]}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": true
+    },
+    {
+      "i": 73,
+      "input": "[Context]: The patient reports the knee pain is equal in both knees. | The patient has a history of knee problems and attributes the current pain to the weight and repetition of moving boxes. | The pa",
+      "gold": "{\"relevant\": true, \"detail_list\": [{\"type\": \"detail\", \"summary\": \"The patient denies fever and chills.\", \"eval_only\": {\"linked_agenda_item_id\": \"line_0004\", \"first_mention\": false, \"resolution_status\": \"mentioned\", \"clinical_category\": \"ros\"}}]}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"symptom\", \"summary\": \"No fever or chills\"}]}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": false
+    },
+    {
+      "i": 74,
+      "input": "[Context]: The patient has a history of knee problems and attributes the current pain to the weight and repetition of moving boxes. | The patient attempted to treat the pain with Tylenol and ice witho",
+      "gold": "{\"relevant\": true, \"detail_list\": [{\"type\": \"question\", \"summary\": \"The doctor asks if the patient has muscle aches.\", \"eval_only\": {\"linked_agenda_item_id\": \"line_0004\", \"first_mention\": true, \"resolution_status\": \"mentioned\", \"clinical_category\": \"ros\"}}]}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"symptom\", \"summary\": \"joint pain and muscle aches\"}]}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": false
+    },
+    {
+      "i": 75,
+      "input": "[Context]: The patient attempted to treat the pain with Tylenol and ice without success. | The patient reports the knee pain interrupted his sleep on Saturday night. | The doctor asks if the patient h",
+      "gold": "{\"relevant\": true, \"detail_list\": [{\"type\": \"detail\", \"summary\": \"The patient denies muscle aches.\", \"eval_only\": {\"linked_agenda_item_id\": \"line_0004\", \"first_mention\": false, \"resolution_status\": \"mentioned\", \"clinical_category\": \"ros\"}}]}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"social_history\", \"summary\": \"Patient denies muscle aches\"}]}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": false
+    },
+    {
+      "i": 76,
+      "input": "[Context]: The patient reports the knee pain interrupted his sleep on Saturday night. | The doctor asks if the patient has fever or chills. | The patient denies fever and chills. | The doctor asks if ",
+      "gold": "{\"relevant\": true, \"detail_list\": [{\"type\": \"question\", \"summary\": \"The doctor asks if the patient has nausea, vomiting, or diarrhea.\", \"eval_only\": {\"linked_agenda_item_id\": \"line_0004\", \"first_mention\": true, \"resolution_status\": \"mentioned\", \"clinical_category\": \"ros\"}}]}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"symptom\", \"summary\": \"nausea, vomiting, diarrhea\"}]}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": false
+    },
+    {
+      "i": 77,
+      "input": "[Context]: The doctor asks if the patient has fever or chills. | The patient denies fever and chills. | The doctor asks if the patient has muscle aches. | The patient denies muscle aches. | The doctor",
+      "gold": "{\"relevant\": true, \"detail_list\": [{\"type\": \"detail\", \"summary\": \"The patient denies nausea, vomiting, and diarrhea.\", \"eval_only\": {\"linked_agenda_item_id\": \"line_0004\", \"first_mention\": false, \"resolution_status\": \"mentioned\", \"clinical_category\": \"ros\"}}]}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"question\", \"summary\": \"nausea, vomiting, or diarrhea\"}]}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": false
+    },
+    {
+      "i": 78,
+      "input": "[Context]: The patient denies fever and chills. | The doctor asks if the patient has muscle aches. | The patient denies muscle aches. | The doctor asks if the patient has nausea, vomiting, or diarrhea",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"question\", \"summary\": \"Doctor asks if the patient has any symptoms like fever, chills, muscle aches, nausea, vomiting, or diarrhea\"}]}",
+      "parse_ok": true,
+      "rel_correct": false,
+      "type_correct": false
+    },
+    {
+      "i": 79,
+      "input": "[Context]: The patient denies fever and chills. | The doctor asks if the patient has muscle aches. | The patient denies muscle aches. | The doctor asks if the patient has nausea, vomiting, or diarrhea",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"question\", \"summary\": \"Patient denies symptoms\"}]}",
+      "parse_ok": true,
+      "rel_correct": false,
+      "type_correct": false
+    },
+    {
+      "i": 80,
+      "input": "[Context]: The patient denies fever and chills. | The doctor asks if the patient has muscle aches. | The patient denies muscle aches. | The doctor asks if the patient has nausea, vomiting, or diarrhea",
+      "gold": "{\"relevant\": true, \"detail_list\": [{\"type\": \"agenda_item\", \"summary\": \"Kidney transplant history.\", \"eval_only\": {\"linked_agenda_item_id\": \"line_0004\", \"first_mention\": true, \"resolution_status\": \"mentioned\", \"clinical_category\": \"pmh\"}}]}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"social_history\", \"summary\": \"History of kidney transplant for polycystic kidneys\"}]}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": false
+    },
+    {
+      "i": 81,
+      "input": "[Context]: The doctor asks if the patient has muscle aches. | The patient denies muscle aches. | The doctor asks if the patient has nausea, vomiting, or diarrhea. | The patient denies nausea, vomiting",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"question_unanswered\", \"summary\": \"Patient responds with a non-verbal affirmative (mm-hmm) to the doctor's question about muscle aches.\"}]}",
+      "parse_ok": true,
+      "rel_correct": false,
+      "type_correct": false
+    },
+    {
+      "i": 82,
+      "input": "[Context]: The doctor asks if the patient has muscle aches. | The patient denies muscle aches. | The doctor asks if the patient has nausea, vomiting, or diarrhea. | The patient denies nausea, vomiting",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": false}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": true
+    },
+    {
+      "i": 83,
+      "input": "[Context]: The doctor asks if the patient has muscle aches. | The patient denies muscle aches. | The doctor asks if the patient has nausea, vomiting, or diarrhea. | The patient denies nausea, vomiting",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": false}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": true
+    },
+    {
+      "i": 84,
+      "input": "[Context]: The doctor asks if the patient has muscle aches. | The patient denies muscle aches. | The doctor asks if the patient has nausea, vomiting, or diarrhea. | The patient denies nausea, vomiting",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"follow_up\", \"summary\": \"Follow-up on symptoms\"}]}",
+      "parse_ok": true,
+      "rel_correct": false,
+      "type_correct": false
+    },
+    {
+      "i": 85,
+      "input": "[Context]: The doctor asks if the patient has muscle aches. | The patient denies muscle aches. | The doctor asks if the patient has nausea, vomiting, or diarrhea. | The patient denies nausea, vomiting",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"medication\", \"summary\": \"Patient is taking medication\"}]}",
+      "parse_ok": true,
+      "rel_correct": false,
+      "type_correct": false
+    },
+    {
+      "i": 86,
+      "input": "[Context]: The doctor asks if the patient has muscle aches. | The patient denies muscle aches. | The doctor asks if the patient has nausea, vomiting, or diarrhea. | The patient denies nausea, vomiting",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"question_unanswered\", \"summary\": \"Doctor's follow-up question on patient's condition\"}]}",
+      "parse_ok": true,
+      "rel_correct": false,
+      "type_correct": false
+    },
+    {
+      "i": 87,
+      "input": "[Context]: The doctor asks if the patient has muscle aches. | The patient denies muscle aches. | The doctor asks if the patient has nausea, vomiting, or diarrhea. | The patient denies nausea, vomiting",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": false}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": true
+    },
+    {
+      "i": 88,
+      "input": "[Context]: The doctor asks if the patient has muscle aches. | The patient denies muscle aches. | The doctor asks if the patient has nausea, vomiting, or diarrhea. | The patient denies nausea, vomiting",
+      "gold": "{\"relevant\": true, \"detail_list\": [{\"type\": \"question\", \"summary\": \"The doctor asks if the patient is taking his immunosuppressant medications.\", \"eval_only\": {\"linked_agenda_item_id\": \"line_0024\", \"first_mention\": true, \"resolution_status\": \"mentioned\", \"clinical_category\": \"medication\"}}]}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"medication\", \"summary\": \"immunosuppressive medications\"}]}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": false
+    },
+    {
+      "i": 89,
+      "input": "[Context]: The patient denies muscle aches. | The doctor asks if the patient has nausea, vomiting, or diarrhea. | The patient denies nausea, vomiting, and diarrhea. | Kidney transplant history. | The ",
+      "gold": "{\"relevant\": true, \"detail_list\": [{\"type\": \"detail\", \"summary\": \"The patient confirms he is taking his immunosuppressant medications.\", \"eval_only\": {\"linked_agenda_item_id\": \"line_0024\", \"first_mention\": false, \"resolution_status\": \"mentioned\", \"clinical_category\": \"medication\"}}]}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"medication\", \"summary\": \"Patient is taking immunosuppressant medications\"}]}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": false
+    },
+    {
+      "i": 90,
+      "input": "[Context]: The doctor asks if the patient has nausea, vomiting, or diarrhea. | The patient denies nausea, vomiting, and diarrhea. | Kidney transplant history. | The doctor asks if the patient is takin",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"question_unanswered\", \"summary\": \"Patient's response to doctor's inquiry about symptoms\"}}",
+      "parse_ok": false,
+      "rel_correct": true,
+      "type_correct": true
+    },
+    {
+      "i": 91,
+      "input": "[Context]: The doctor asks if the patient has nausea, vomiting, or diarrhea. | The patient denies nausea, vomiting, and diarrhea. | Kidney transplant history. | The doctor asks if the patient is takin",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"symptom\", \"summary\": \"nausea, vomiting, diarrhea\"}]}",
+      "parse_ok": true,
+      "rel_correct": false,
+      "type_correct": false
+    },
+    {
+      "i": 92,
+      "input": "[Context]: The doctor asks if the patient has nausea, vomiting, or diarrhea. | The patient denies nausea, vomiting, and diarrhea. | Kidney transplant history. | The doctor asks if the patient is takin",
+      "gold": "{\"relevant\": true, \"detail_list\": [{\"type\": \"agenda_item\", \"summary\": \"Hypothyroidism management.\", \"eval_only\": {\"linked_agenda_item_id\": \"line_0004\", \"first_mention\": true, \"resolution_status\": \"mentioned\", \"clinical_category\": \"pmh\"}}]}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"medication\", \"summary\": \"Synthroid dosage and management\"}]}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": false
+    },
+    {
+      "i": 93,
+      "input": "[Context]: The patient denies nausea, vomiting, and diarrhea. | Kidney transplant history. | The doctor asks if the patient is taking his immunosuppressant medications. | The patient confirms he is ta",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"medication\", \"summary\": \"Immunosuppressant medications\"}]}",
+      "parse_ok": true,
+      "rel_correct": false,
+      "type_correct": false
+    },
+    {
+      "i": 94,
+      "input": "[Context]: The patient denies nausea, vomiting, and diarrhea. | Kidney transplant history. | The doctor asks if the patient is taking his immunosuppressant medications. | The patient confirms he is ta",
+      "gold": "{\"relevant\": true, \"detail_list\": [{\"type\": \"question\", \"summary\": \"The doctor asks if the patient is taking Synthroid regularly.\", \"eval_only\": {\"linked_agenda_item_id\": \"line_0036\", \"first_mention\": true, \"resolution_status\": \"mentioned\", \"clinical_category\": \"medication\"}}]}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"medication\", \"summary\": \"Immunosuppressant medications\"}]}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": false
+    },
+    {
+      "i": 95,
+      "input": "[Context]: Kidney transplant history. | The doctor asks if the patient is taking his immunosuppressant medications. | The patient confirms he is taking his immunosuppressant medications. | Hypothyroid",
+      "gold": "{\"relevant\": true, \"detail_list\": [{\"type\": \"detail\", \"summary\": \"The patient confirms he takes Synthroid regularly.\", \"eval_only\": {\"linked_agenda_item_id\": \"line_0036\", \"first_mention\": false, \"resolution_status\": \"mentioned\", \"clinical_category\": \"medication\"}}]}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"medication\", \"summary\": \"Taking Synthroid regularly\"}]}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": false
+    },
+    {
+      "i": 96,
+      "input": "[Context]: The doctor asks if the patient is taking his immunosuppressant medications. | The patient confirms he is taking his immunosuppressant medications. | Hypothyroidism management. | The doctor ",
+      "gold": "{\"relevant\": true, \"detail_list\": [{\"type\": \"question\", \"summary\": \"The doctor asks about fatigue and weight gain.\", \"eval_only\": {\"linked_agenda_item_id\": \"line_0036\", \"first_mention\": true, \"resolution_status\": \"mentioned\", \"clinical_category\": \"ros\"}}]}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"question\", \"summary\": \"symptoms\"}]}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": true
+    },
+    {
+      "i": 97,
+      "input": "[Context]: The patient confirms he is taking his immunosuppressant medications. | Hypothyroidism management. | The doctor asks if the patient is taking Synthroid regularly. | The patient confirms he t",
+      "gold": "{\"relevant\": true, \"detail_list\": [{\"type\": \"detail\", \"summary\": \"The patient denies fatigue or weight gain.\", \"eval_only\": {\"linked_agenda_item_id\": \"line_0036\", \"first_mention\": false, \"resolution_status\": \"mentioned\", \"clinical_category\": \"ros\"}}]}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"question_unanswered\", \"summary\": \"Fatigue and weight gain concerns not addressed\"}]}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": false
+    },
+    {
+      "i": 98,
+      "input": "[Context]: Hypothyroidism management. | The doctor asks if the patient is taking Synthroid regularly. | The patient confirms he takes Synthroid regularly. | The doctor asks about fatigue and weight ga",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": false}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": true
+    },
+    {
+      "i": 99,
+      "input": "[Context]: Hypothyroidism management. | The doctor asks if the patient is taking Synthroid regularly. | The patient confirms he takes Synthroid regularly. | The doctor asks about fatigue and weight ga",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": false}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": true
+    },
+    {
+      "i": 100,
+      "input": "[Context]: Hypothyroidism management. | The doctor asks if the patient is taking Synthroid regularly. | The patient confirms he takes Synthroid regularly. | The doctor asks about fatigue and weight ga",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"medication\", \"summary\": \"kidney transplant\"}]}",
+      "parse_ok": true,
+      "rel_correct": false,
+      "type_correct": false
+    },
+    {
+      "i": 101,
+      "input": "[Context]: Hypothyroidism management. | The doctor asks if the patient is taking Synthroid regularly. | The patient confirms he takes Synthroid regularly. | The doctor asks about fatigue and weight ga",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"question_unanswered\", \"summary\": \"Patient confirms taking Synthroid, but does not address concerns about fatigue and weight gain.\"}]}",
+      "parse_ok": true,
+      "rel_correct": false,
+      "type_correct": false
+    },
+    {
+      "i": 102,
+      "input": "[Context]: Hypothyroidism management. | The doctor asks if the patient is taking Synthroid regularly. | The patient confirms he takes Synthroid regularly. | The doctor asks about fatigue and weight ga",
+      "gold": "{\"relevant\": true, \"detail_list\": [{\"type\": \"question\", \"summary\": \"The doctor asks if the patient has any other joint pain besides his knees.\", \"eval_only\": {\"linked_agenda_item_id\": \"line_0004\", \"first_mention\": true, \"resolution_status\": \"mentioned\", \"clinical_category\": \"hpi\"}}]}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"question\", \"summary\": \"joint pain\"}]}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": true
+    },
+    {
+      "i": 103,
+      "input": "[Context]: The doctor asks if the patient is taking Synthroid regularly. | The patient confirms he takes Synthroid regularly. | The doctor asks about fatigue and weight gain. | The patient denies fati",
+      "gold": "{\"relevant\": true, \"detail_list\": [{\"type\": \"detail\", \"summary\": \"The patient reports occasional elbow pain.\", \"eval_only\": {\"linked_agenda_item_id\": \"line_0004\", \"first_mention\": true, \"resolution_status\": \"mentioned\", \"clinical_category\": \"hpi\"}}]}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"joint_pain\", \"summary\": \"Elbow pain\"}]}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": false
+    },
+    {
+      "i": 104,
+      "input": "[Context]: The patient confirms he takes Synthroid regularly. | The doctor asks about fatigue and weight gain. | The patient denies fatigue or weight gain. | The doctor asks if the patient has any oth",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"question\", \"summary\": \"Review of systems sheet missed any other symptoms?\"}]}",
+      "parse_ok": true,
+      "rel_correct": false,
+      "type_correct": false
+    },
+    {
+      "i": 105,
+      "input": "[Context]: The patient confirms he takes Synthroid regularly. | The doctor asks about fatigue and weight gain. | The patient denies fatigue or weight gain. | The doctor asks if the patient has any oth",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"medication\", \"summary\": \"Patient confirms taking Synthroid regularly\"}]}",
+      "parse_ok": true,
+      "rel_correct": false,
+      "type_correct": false
+    },
+    {
+      "i": 106,
+      "input": "[Context]: The patient confirms he takes Synthroid regularly. | The doctor asks about fatigue and weight gain. | The patient denies fatigue or weight gain. | The doctor asks if the patient has any oth",
+      "gold": "{\"relevant\": true, \"detail_list\": [{\"type\": \"question\", \"summary\": \"The doctor asks if the patient has headaches.\", \"eval_only\": {\"linked_agenda_item_id\": null, \"first_mention\": true, \"resolution_status\": \"mentioned\", \"clinical_category\": \"ros\"}}]}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"question\", \"summary\": \"Doctor asks about headaches\"}]}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": true
+    },
+    {
+      "i": 107,
+      "input": "[Context]: The doctor asks about fatigue and weight gain. | The patient denies fatigue or weight gain. | The doctor asks if the patient has any other joint pain besides his knees. | The patient report",
+      "gold": "{\"relevant\": true, \"detail_list\": [{\"type\": \"detail\", \"summary\": \"The patient denies headaches.\", \"eval_only\": {\"linked_agenda_item_id\": null, \"first_mention\": false, \"resolution_status\": \"mentioned\", \"clinical_category\": \"ros\"}}]}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"question\", \"summary\": \"denies headaches\"}]}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": false
+    },
+    {
+      "i": 108,
+      "input": "[Context]: The patient denies fatigue or weight gain. | The doctor asks if the patient has any other joint pain besides his knees. | The patient reports occasional elbow pain. | The doctor asks if the",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"medication\", \"summary\": \"The doctor is discussing medication and vital signs.\"}, {\"type\": \"vital_signs\", \"summary\": \"The patient's vital signs are good, no fever.\"}]",
+      "parse_ok": false,
+      "rel_correct": true,
+      "type_correct": true
+    },
+    {
+      "i": 109,
+      "input": "[Context]: The patient denies fatigue or weight gain. | The doctor asks if the patient has any other joint pain besides his knees. | The patient reports occasional elbow pain. | The doctor asks if the",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"question_unanswered\", \"summary\": \"Patient confirms existence of elbow pain and headaches.\"}]}",
+      "parse_ok": true,
+      "rel_correct": false,
+      "type_correct": false
+    },
+    {
+      "i": 110,
+      "input": "[Context]: The patient denies fatigue or weight gain. | The doctor asks if the patient has any other joint pain besides his knees. | The patient reports occasional elbow pain. | The doctor asks if the",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"question\", \"summary\": \"Doctor inquires about potential issues with the patient's overall health, specifically mentioning checking 'things out' and informing the patient of the results\"}]}",
+      "parse_ok": true,
+      "rel_correct": false,
+      "type_correct": false
+    },
+    {
+      "i": 111,
+      "input": "[Context]: The patient denies fatigue or weight gain. | The doctor asks if the patient has any other joint pain besides his knees. | The patient reports occasional elbow pain. | The doctor asks if the",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": false}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": true
+    },
+    {
+      "i": 112,
+      "input": "[Context]: The patient denies fatigue or weight gain. | The doctor asks if the patient has any other joint pain besides his knees. | The patient reports occasional elbow pain. | The doctor asks if the",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"pain\", \"summary\": \"Elbow pain\"}]}",
+      "parse_ok": true,
+      "rel_correct": false,
+      "type_correct": false
+    },
+    {
+      "i": 113,
+      "input": "[Context]: The patient denies fatigue or weight gain. | The doctor asks if the patient has any other joint pain besides his knees. | The patient reports occasional elbow pain. | The doctor asks if the",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"pain\", \"summary\": \"tender elbow\"}]}",
+      "parse_ok": true,
+      "rel_correct": false,
+      "type_correct": false
+    },
+    {
+      "i": 114,
+      "input": "[Context]: The patient denies fatigue or weight gain. | The doctor asks if the patient has any other joint pain besides his knees. | The patient reports occasional elbow pain. | The doctor asks if the",
+      "gold": "{\"relevant\": true, \"detail_list\": [{\"type\": \"detail\", \"summary\": \"Physical exam reveals a 2/6 systolic ejection murmur, which is stable.\", \"eval_only\": {\"linked_agenda_item_id\": null, \"first_mention\": true, \"resolution_status\": \"mentioned\", \"clinical_category\": \"physical_exam\"}}]}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"medication\", \"summary\": \"systolic ejection murmur\"}]}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": false
+    },
+    {
+      "i": 115,
+      "input": "[Context]: The doctor asks if the patient has any other joint pain besides his knees. | The patient reports occasional elbow pain. | The doctor asks if the patient has headaches. | The patient denies ",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"question_unanswered\", \"summary\": \"Elbow pain and headaches\"}}",
+      "parse_ok": false,
+      "rel_correct": true,
+      "type_correct": true
+    },
+    {
+      "i": 116,
+      "input": "[Context]: The doctor asks if the patient has any other joint pain besides his knees. | The patient reports occasional elbow pain. | The doctor asks if the patient has headaches. | The patient denies ",
+      "gold": "{\"relevant\": true, \"detail_list\": [{\"type\": \"detail\", \"summary\": \"Physical exam of the right knee shows edema, erythema, tenderness to palpation, and decreased range of motion; the left knee is normal.\", \"eval_only\": {\"linked_agenda_item_id\": \"line_0004\", \"first_mention\": true, \"resolution_status\": ",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"agenda_item\", \"summary\": \"Discussion of knee pain and examination findings, including edema, erythema, pain to palpation, and decreased range of motion in the right knee, with no findings in the left knee.\"}]}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": false
+    },
+    {
+      "i": 117,
+      "input": "[Context]: The patient reports occasional elbow pain. | The doctor asks if the patient has headaches. | The patient denies headaches. | Physical exam reveals a 2/6 systolic ejection murmur, which is s",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"question_unanswered\", \"summary\": \"Patient's response to doctor's question about headaches\"}}",
+      "parse_ok": false,
+      "rel_correct": true,
+      "type_correct": true
+    },
+    {
+      "i": 118,
+      "input": "[Context]: The patient reports occasional elbow pain. | The doctor asks if the patient has headaches. | The patient denies headaches. | Physical exam reveals a 2/6 systolic ejection murmur, which is s",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"physical_exam\", \"summary\": \"Physical exam of the right knee shows edema, erythema, tenderness to palpation, and decreased range of motion; the left knee is normal.\"}]}",
+      "parse_ok": true,
+      "rel_correct": false,
+      "type_correct": false
+    },
+    {
+      "i": 119,
+      "input": "[Context]: The patient reports occasional elbow pain. | The doctor asks if the patient has headaches. | The patient denies headaches. | Physical exam reveals a 2/6 systolic ejection murmur, which is s",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": false}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": true
+    },
+    {
+      "i": 120,
+      "input": "[Context]: The patient reports occasional elbow pain. | The doctor asks if the patient has headaches. | The patient denies headaches. | Physical exam reveals a 2/6 systolic ejection murmur, which is s",
+      "gold": "{\"relevant\": true, \"detail_list\": [{\"type\": \"detail\", \"summary\": \"Right knee X-ray shows good bony alignment and no acute fractures.\", \"eval_only\": {\"linked_agenda_item_id\": \"line_0004\", \"first_mention\": true, \"resolution_status\": \"mentioned\", \"clinical_category\": \"physical_exam\"}}]}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"x-ray\", \"summary\": \"Normal bony alignment with no acute fracture in the right knee.\"}]}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": false
+    },
+    {
+      "i": 121,
+      "input": "[Context]: The doctor asks if the patient has headaches. | The patient denies headaches. | Physical exam reveals a 2/6 systolic ejection murmur, which is stable. | Physical exam of the right knee show",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"question_unanswered\", \"summary\": \"Patient's response to headache inquiry\"}}",
+      "parse_ok": false,
+      "rel_correct": true,
+      "type_correct": true
+    },
+    {
+      "i": 122,
+      "input": "[Context]: The doctor asks if the patient has headaches. | The patient denies headaches. | Physical exam reveals a 2/6 systolic ejection murmur, which is stable. | Physical exam of the right knee show",
+      "gold": "{\"relevant\": true, \"detail_list\": [{\"type\": \"detail\", \"summary\": \"Lab results show normal white blood cell count.\", \"eval_only\": {\"linked_agenda_item_id\": \"line_0024\", \"first_mention\": true, \"resolution_status\": \"mentioned\", \"clinical_category\": \"physical_exam\"}}]}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"laboratory_result\", \"summary\": \"Normal white blood cell count, which is a good sign, especially for someone who is immunocompromised.\"}]}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": false
+    },
+    {
+      "i": 123,
+      "input": "[Context]: The patient denies headaches. | Physical exam reveals a 2/6 systolic ejection murmur, which is stable. | Physical exam of the right knee shows edema, erythema, tenderness to palpation, and ",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"question\", \"summary\": \"Patient's response to physical exam findings\"}}",
+      "parse_ok": false,
+      "rel_correct": true,
+      "type_correct": true
+    },
+    {
+      "i": 124,
+      "input": "[Context]: The patient denies headaches. | Physical exam reveals a 2/6 systolic ejection murmur, which is stable. | Physical exam of the right knee shows edema, erythema, tenderness to palpation, and ",
+      "gold": "{\"relevant\": true, \"detail_list\": [{\"type\": \"detail\", \"summary\": \"Lab results show normal kidney function.\", \"eval_only\": {\"linked_agenda_item_id\": \"line_0024\", \"first_mention\": true, \"resolution_status\": \"mentioned\", \"clinical_category\": \"physical_exam\"}}]}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"lab_result\", \"summary\": \"normal kidney function\"}]}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": false
+    },
+    {
+      "i": 125,
+      "input": "[Context]: Physical exam reveals a 2/6 systolic ejection murmur, which is stable. | Physical exam of the right knee shows edema, erythema, tenderness to palpation, and decreased range of motion; the l",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": false}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": true
+    },
+    {
+      "i": 126,
+      "input": "[Context]: Physical exam reveals a 2/6 systolic ejection murmur, which is stable. | Physical exam of the right knee shows edema, erythema, tenderness to palpation, and decreased range of motion; the l",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": false}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": true
+    },
+    {
+      "i": 127,
+      "input": "[Context]: Physical exam reveals a 2/6 systolic ejection murmur, which is stable. | Physical exam of the right knee shows edema, erythema, tenderness to palpation, and decreased range of motion; the l",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"question\", \"summary\": \"Patient's response to physical exam and lab results\"}}",
+      "parse_ok": false,
+      "rel_correct": true,
+      "type_correct": true
+    },
+    {
+      "i": 128,
+      "input": "[Context]: Physical exam reveals a 2/6 systolic ejection murmur, which is stable. | Physical exam of the right knee shows edema, erythema, tenderness to palpation, and decreased range of motion; the l",
+      "gold": "{\"relevant\": true, \"detail_list\": [{\"type\": \"medication\", \"summary\": \"Initiate Ultram 50 mg every 6 hours as needed for knee pain.\", \"eval_only\": {\"linked_agenda_item_id\": \"line_0004\", \"first_mention\": true, \"resolution_status\": \"mentioned\", \"clinical_category\": \"plan\"}}]}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"question_unanswered\", \"summary\": \"Diagnosis of arthritis and treatment plan for knee pain\"}]}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": false
+    },
+    {
+      "i": 129,
+      "input": "[Context]: Physical exam of the right knee shows edema, erythema, tenderness to palpation, and decreased range of motion; the left knee is normal. | Right knee X-ray shows good bony alignment and no a",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": false}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": true
+    },
+    {
+      "i": 130,
+      "input": "[Context]: Physical exam of the right knee shows edema, erythema, tenderness to palpation, and decreased range of motion; the left knee is normal. | Right knee X-ray shows good bony alignment and no a",
+      "gold": "{\"relevant\": true, \"detail_list\": [{\"type\": \"follow_up\", \"summary\": \"Order an autoimmune panel and advise the patient to rest his knees.\", \"eval_only\": {\"linked_agenda_item_id\": \"line_0004\", \"first_mention\": true, \"resolution_status\": \"mentioned\", \"clinical_category\": \"plan\"}}]}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"agenda_item\", \"summary\": \"Autoimmune panel ordered\"}, {\"type\": \"agenda_item\", \"summary\": \"Physical therapy referral potentially discussed\"}]}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": false
+    },
+    {
+      "i": 131,
+      "input": "[Context]: Right knee X-ray shows good bony alignment and no acute fractures. | Lab results show normal white blood cell count. | Lab results show normal kidney function. | Initiate Ultram 50 mg every",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": false}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": true
+    },
+    {
+      "i": 132,
+      "input": "[Context]: Right knee X-ray shows good bony alignment and no acute fractures. | Lab results show normal white blood cell count. | Lab results show normal kidney function. | Initiate Ultram 50 mg every",
+      "gold": "{\"relevant\": true, \"detail_list\": [{\"type\": \"follow_up\", \"summary\": \"Continue Synthroid and order a thyroid panel.\", \"eval_only\": {\"linked_agenda_item_id\": \"line_0036\", \"first_mention\": true, \"resolution_status\": \"mentioned\", \"clinical_category\": \"plan\"}}]}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"medication\", \"summary\": \"Continue on Synthroid and order thyroid labs\"}]}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": false
+    },
+    {
+      "i": 133,
+      "input": "[Context]: Lab results show normal white blood cell count. | Lab results show normal kidney function. | Initiate Ultram 50 mg every 6 hours as needed for knee pain. | Order an autoimmune panel and adv",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": false}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": true
+    },
+    {
+      "i": 134,
+      "input": "[Context]: Lab results show normal white blood cell count. | Lab results show normal kidney function. | Initiate Ultram 50 mg every 6 hours as needed for knee pain. | Order an autoimmune panel and adv",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"medication\", \"summary\": \"Ultram 50 mg every 6 hours as needed for knee pain\"}, {\"type\": \"medication\", \"summary\": \"Synthroid\"}, {\"type\": \"question\", \"summary\": \"arthritis treatment options considering kidney transplant\"}]}",
+      "parse_ok": true,
+      "rel_correct": false,
+      "type_correct": false
+    },
+    {
+      "i": 135,
+      "input": "[Context]: Lab results show normal white blood cell count. | Lab results show normal kidney function. | Initiate Ultram 50 mg every 6 hours as needed for knee pain. | Order an autoimmune panel and adv",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": false}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": true
+    },
+    {
+      "i": 136,
+      "input": "[Context]: Lab results show normal white blood cell count. | Lab results show normal kidney function. | Initiate Ultram 50 mg every 6 hours as needed for knee pain. | Order an autoimmune panel and adv",
+      "gold": "{\"relevant\": true, \"detail_list\": [{\"type\": \"follow_up\", \"summary\": \"Consider referral to physical therapy if symptoms persist.\", \"eval_only\": {\"linked_agenda_item_id\": \"line_0004\", \"first_mention\": true, \"resolution_status\": \"mentioned\", \"clinical_category\": \"plan\"}}]}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"follow_up\", \"summary\": \"Schedule follow-up appointment to monitor progress and refer to physical therapy if necessary\"}]}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": true
+    },
+    {
+      "i": 137,
+      "input": "[Context]: Lab results show normal kidney function. | Initiate Ultram 50 mg every 6 hours as needed for knee pain. | Order an autoimmune panel and advise the patient to rest his knees. | Continue Synt",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": false}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": true
+    },
+    {
+      "i": 138,
+      "input": "[Context]: Lab results show normal kidney function. | Initiate Ultram 50 mg every 6 hours as needed for knee pain. | Order an autoimmune panel and advise the patient to rest his knees. | Continue Synt",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"question\", \"summary\": \"Doctor has a question about the patient\"}}",
+      "parse_ok": false,
+      "rel_correct": true,
+      "type_correct": true
+    },
+    {
+      "i": 139,
+      "input": "[Context]: Lab results show normal kidney function. | Initiate Ultram 50 mg every 6 hours as needed for knee pain. | Order an autoimmune panel and advise the patient to rest his knees. | Continue Synt",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": false}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": true
+    },
+    {
+      "i": 140,
+      "input": "[Context]: Lab results show normal kidney function. | Initiate Ultram 50 mg every 6 hours as needed for knee pain. | Order an autoimmune panel and advise the patient to rest his knees. | Continue Synt",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": false}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": true
+    },
+    {
+      "i": 141,
+      "input": "[Context]: Start of visit\n[Utterance]: [Doctor] hi , john . how are you ?",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": false}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": true
+    },
+    {
+      "i": 142,
+      "input": "[Context]: Start of visit\n[Utterance]: [Patient] hey . well , relatively speaking , okay . good to see you .",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": false}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": true
+    },
+    {
+      "i": 143,
+      "input": "[Context]: Start of visit\n[Utterance]: [Doctor] good to see you as well . so i know the nurse told you about dax . i'm gon na tell dax a little bit about you .",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"social_history\", \"summary\": \"Patient is being informed about their own medical history by the doctor\"}]}",
+      "parse_ok": true,
+      "rel_correct": false,
+      "type_correct": false
+    },
+    {
+      "i": 144,
+      "input": "[Context]: Start of visit\n[Utterance]: [Patient] okay .",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"agenda_item\", \"summary\": \"Patient okay\"}]}",
+      "parse_ok": true,
+      "rel_correct": false,
+      "type_correct": false
+    },
+    {
+      "i": 145,
+      "input": "[Context]: Start of visit\n[Utterance]: [Doctor] so john is a 61-year-old male with a past medical history significant for kidney stones , migraines and reflux , who presents with some back pain . so j",
+      "gold": "{\"relevant\": true, \"detail_list\": [{\"type\": \"agenda_item\", \"summary\": \"The patient is a 61-year-old male presenting with back pain and a history of kidney stones, migraines, and reflux.\", \"eval_only\": {\"linked_agenda_item_id\": null, \"first_mention\": true, \"resolution_status\": \"mentioned\", \"clinical_",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"social_history\", \"summary\": \"Patient has a past medical history of kidney stones, migraines, and reflux, and is now presenting with back pain.\"}]}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": false
+    },
+    {
+      "i": 146,
+      "input": "[Context]: The patient is a 61-year-old male presenting with back pain and a history of kidney stones, migraines, and reflux.\n[Utterance]: [Patient] uh , i'm feeling a lot of the same pain that i had ",
+      "gold": "{\"relevant\": true, \"detail_list\": [{\"type\": \"detail\", \"summary\": \"The patient reports back pain similar to his previous kidney stone episode.\", \"eval_only\": {\"linked_agenda_item_id\": \"line_0004\", \"first_mention\": true, \"resolution_status\": \"mentioned\", \"clinical_category\": \"hpi\"}}]}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"symptom\", \"summary\": \"Increased back pain, similar to previous episode of kidney stones\"}]}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": false
+    },
+    {
+      "i": 147,
+      "input": "[Context]: The patient is a 61-year-old male presenting with back pain and a history of kidney stones, migraines, and reflux. | The patient reports back pain similar to his previous kidney stone episo",
+      "gold": "{\"relevant\": true, \"detail_list\": [{\"type\": \"question\", \"summary\": \"The doctor asks about the location of the back pain.\", \"eval_only\": {\"linked_agenda_item_id\": \"line_0004\", \"first_mention\": true, \"resolution_status\": \"mentioned\", \"clinical_category\": \"hpi\"}}]}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"back pain\", \"summary\": \"Location of back pain\"}]}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": false
+    },
+    {
+      "i": 148,
+      "input": "[Context]: The patient is a 61-year-old male presenting with back pain and a history of kidney stones, migraines, and reflux. | The patient reports back pain similar to his previous kidney stone episo",
+      "gold": "{\"relevant\": true, \"detail_list\": [{\"type\": \"detail\", \"summary\": \"The pain shifted from the right side to the left side of the back.\", \"eval_only\": {\"linked_agenda_item_id\": \"line_0004\", \"first_mention\": true, \"resolution_status\": \"mentioned\", \"clinical_category\": \"hpi\"}}]}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"agenda_item\", \"summary\": \"Location of back pain has changed from right to left side\"}]}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": false
+    },
+    {
+      "i": 149,
+      "input": "[Context]: The patient is a 61-year-old male presenting with back pain and a history of kidney stones, migraines, and reflux. | The patient reports back pain similar to his previous kidney stone episo",
+      "gold": "{\"relevant\": true, \"detail_list\": [{\"type\": \"question\", \"summary\": \"The doctor asks about the duration of the symptoms.\", \"eval_only\": {\"linked_agenda_item_id\": \"line_0004\", \"first_mention\": true, \"resolution_status\": \"mentioned\", \"clinical_category\": \"hpi\"}}]}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"follow_up\", \"summary\": \"Duration of back pain\"}}",
+      "parse_ok": false,
+      "rel_correct": false,
+      "type_correct": false
+    },
+    {
+      "i": 150,
+      "input": "[Context]: The patient is a 61-year-old male presenting with back pain and a history of kidney stones, migraines, and reflux. | The patient reports back pain similar to his previous kidney stone episo",
+      "gold": "{\"relevant\": true, \"detail_list\": [{\"type\": \"detail\", \"summary\": \"The pain has been present for four days.\", \"eval_only\": {\"linked_agenda_item_id\": \"line_0004\", \"first_mention\": true, \"resolution_status\": \"mentioned\", \"clinical_category\": \"hpi\"}}]}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"duration\", \"summary\": \"Duration of symptoms is 4 days\"}]}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": false
+    },
+    {
+      "i": 151,
+      "input": "[Context]: The patient reports back pain similar to his previous kidney stone episode. | The doctor asks about the location of the back pain. | The pain shifted from the right side to the left side of",
+      "gold": "{\"relevant\": true, \"detail_list\": [{\"type\": \"question\", \"summary\": \"The doctor asks if the pain is intermittent or constant.\", \"eval_only\": {\"linked_agenda_item_id\": \"line_0004\", \"first_mention\": true, \"resolution_status\": \"mentioned\", \"clinical_category\": \"hpi\"}}]}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"question\", \"summary\": \"Is the pain coming and going?\"}]}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": true
+    },
+    {
+      "i": 152,
+      "input": "[Context]: The doctor asks about the location of the back pain. | The pain shifted from the right side to the left side of the back. | The doctor asks about the duration of the symptoms. | The pain ha",
+      "gold": "{\"relevant\": true, \"detail_list\": [{\"type\": \"detail\", \"summary\": \"The pain was initially intermittent but has been constant for the last 48 hours.\", \"eval_only\": {\"linked_agenda_item_id\": \"line_0004\", \"first_mention\": true, \"resolution_status\": \"mentioned\", \"clinical_category\": \"hpi\"}}]}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"symptom\", \"summary\": \"Location and duration of back pain: Initially intermittent, now constant and severe\"}]}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": false
+    },
+    {
+      "i": 153,
+      "input": "[Context]: The pain shifted from the right side to the left side of the back. | The doctor asks about the duration of the symptoms. | The pain has been present for four days. | The doctor asks if the ",
+      "gold": "{\"relevant\": true, \"detail_list\": [{\"type\": \"question\", \"summary\": \"The doctor asks what the patient has taken for pain.\", \"eval_only\": {\"linked_agenda_item_id\": \"line_0004\", \"first_mention\": true, \"resolution_status\": \"mentioned\", \"clinical_category\": \"hpi\"}}]}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"medication\", \"summary\": \"Medication taken for pain\"}]}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": false
+    },
+    {
+      "i": 154,
+      "input": "[Context]: The doctor asks about the duration of the symptoms. | The pain has been present for four days. | The doctor asks if the pain is intermittent or constant. | The pain was initially intermitte",
+      "gold": "{\"relevant\": true, \"detail_list\": [{\"type\": \"detail\", \"summary\": \"The patient took Tylenol, which did not provide relief.\", \"eval_only\": {\"linked_agenda_item_id\": \"line_0004\", \"first_mention\": true, \"resolution_status\": \"mentioned\", \"clinical_category\": \"hpi\"}}]}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"medication\", \"summary\": \"Patient has taken Tylenol for pain, but it does not seem to be effective\"}]}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": false
+    },
+    {
+      "i": 155,
+      "input": "[Context]: The pain has been present for four days. | The doctor asks if the pain is intermittent or constant. | The pain was initially intermittent but has been constant for the last 48 hours. | The ",
+      "gold": "{\"relevant\": true, \"detail_list\": [{\"type\": \"question\", \"summary\": \"The doctor asks if the patient has blood in his urine.\", \"eval_only\": {\"linked_agenda_item_id\": \"line_0004\", \"first_mention\": true, \"resolution_status\": \"mentioned\", \"clinical_category\": \"ros\"}}]}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"symptom\", \"summary\": \"blood in urine\"}]}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": false
+    },
+    {
+      "i": 156,
+      "input": "[Context]: The doctor asks if the pain is intermittent or constant. | The pain was initially intermittent but has been constant for the last 48 hours. | The doctor asks what the patient has taken for ",
+      "gold": "{\"relevant\": true, \"detail_list\": [{\"type\": \"detail\", \"summary\": \"The patient suspects hematuria due to off-colored urine.\", \"eval_only\": {\"linked_agenda_item_id\": \"line_0004\", \"first_mention\": true, \"resolution_status\": \"mentioned\", \"clinical_category\": \"ros\"}}]}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"social_history\", \"summary\": \"Patient reports possible blood in urine, describing it as 'off-color' and 'hard to detect'.\"}]}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": false
+    },
+    {
+      "i": 157,
+      "input": "[Context]: The pain was initially intermittent but has been constant for the last 48 hours. | The doctor asks what the patient has taken for pain. | The patient took Tylenol, which did not provide rel",
+      "gold": "{\"relevant\": true, \"detail_list\": [{\"type\": \"question\", \"summary\": \"The doctor asks about nausea and vomiting.\", \"eval_only\": {\"linked_agenda_item_id\": \"line_0004\", \"first_mention\": true, \"resolution_status\": \"mentioned\", \"clinical_category\": \"ros\"}}]}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"question\", \"summary\": \"Nausea and vomiting\"}]}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": true
+    },
+    {
+      "i": 158,
+      "input": "[Context]: The doctor asks what the patient has taken for pain. | The patient took Tylenol, which did not provide relief. | The doctor asks if the patient has blood in his urine. | The patient suspect",
+      "gold": "{\"relevant\": true, \"detail_list\": [{\"type\": \"detail\", \"summary\": \"The patient reports dizziness, lightheadedness, and abdominal pain with exertion.\", \"eval_only\": {\"linked_agenda_item_id\": \"line_0004\", \"first_mention\": true, \"resolution_status\": \"mentioned\", \"clinical_category\": \"ros\"}}]}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"symptom\", \"summary\": \"dizziness and lightheadedness during physical exertion\"}]}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": false
+    },
+    {
+      "i": 159,
+      "input": "[Context]: The patient took Tylenol, which did not provide relief. | The doctor asks if the patient has blood in his urine. | The patient suspects hematuria due to off-colored urine. | The doctor asks",
+      "gold": "{\"relevant\": true, \"detail_list\": [{\"type\": \"agenda_item\", \"summary\": \"The doctor transitions to discussing the patient's migraines.\", \"eval_only\": {\"linked_agenda_item_id\": \"line_0004\", \"first_mention\": true, \"resolution_status\": \"mentioned\", \"clinical_category\": \"pmh\"}}]}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"migraine\", \"summary\": \"Patient's migraines\"}}",
+      "parse_ok": false,
+      "rel_correct": false,
+      "type_correct": false
+    },
+    {
+      "i": 160,
+      "input": "[Context]: The doctor asks if the patient has blood in his urine. | The patient suspects hematuria due to off-colored urine. | The doctor asks about nausea and vomiting. | The patient reports dizzines",
+      "gold": "{\"relevant\": true, \"detail_list\": [{\"type\": \"detail\", \"summary\": \"The patient is diligent about taking his Imitrex.\", \"eval_only\": {\"linked_agenda_item_id\": \"line_0018\", \"first_mention\": true, \"resolution_status\": \"mentioned\", \"clinical_category\": \"pmh\"}}]}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"medication\", \"summary\": \"Patient reports adherence to medication regimen\"}]}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": false
+    },
+    {
+      "i": 161,
+      "input": "[Context]: The patient suspects hematuria due to off-colored urine. | The doctor asks about nausea and vomiting. | The patient reports dizziness, lightheadedness, and abdominal pain with exertion. | T",
+      "gold": "{\"relevant\": true, \"detail_list\": [{\"type\": \"question\", \"summary\": \"The doctor asks if there are any issues with migraines.\", \"eval_only\": {\"linked_agenda_item_id\": \"line_0018\", \"first_mention\": true, \"resolution_status\": \"mentioned\", \"clinical_category\": \"pmh\"}}]}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"migraine\", \"summary\": \"Patient's migraines seem to be a concern\"}]}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": false
+    },
+    {
+      "i": 162,
+      "input": "[Context]: The doctor asks about nausea and vomiting. | The patient reports dizziness, lightheadedness, and abdominal pain with exertion. | The doctor transitions to discussing the patient's migraines",
+      "gold": "{\"relevant\": true, \"detail_list\": [{\"type\": \"detail\", \"summary\": \"The patient denies any issues with migraines.\", \"eval_only\": {\"linked_agenda_item_id\": \"line_0018\", \"first_mention\": true, \"resolution_status\": \"mentioned\", \"clinical_category\": \"pmh\"}}]}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"migraine\", \"summary\": \"no issues reported\"}]}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": false
+    },
+    {
+      "i": 163,
+      "input": "[Context]: The patient reports dizziness, lightheadedness, and abdominal pain with exertion. | The doctor transitions to discussing the patient's migraines. | The patient is diligent about taking his ",
+      "gold": "{\"relevant\": true, \"detail_list\": [{\"type\": \"agenda_item\", \"summary\": \"The doctor transitions to discussing the patient's acid reflux.\", \"eval_only\": {\"linked_agenda_item_id\": \"line_0004\", \"first_mention\": true, \"resolution_status\": \"mentioned\", \"clinical_category\": \"pmh\"}}]}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"social_history\", \"summary\": \"acid reflux and diet changes\"}]}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": false
+    },
+    {
+      "i": 164,
+      "input": "[Context]: The doctor transitions to discussing the patient's migraines. | The patient is diligent about taking his Imitrex. | The doctor asks if there are any issues with migraines. | The patient den",
+      "gold": "{\"relevant\": true, \"detail_list\": [{\"type\": \"detail\", \"summary\": \"The patient reports dietary changes due to pain, including increased fast food and takeout.\", \"eval_only\": {\"linked_agenda_item_id\": \"line_0022\", \"first_mention\": true, \"resolution_status\": \"mentioned\", \"clinical_category\": \"pmh\"}}]}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"medication\", \"summary\": \"Patient is taking Imitrex for migraines and has been ordering more take-out and fast food due to mobility issues with stairs.\"}]}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": false
+    },
+    {
+      "i": 165,
+      "input": "[Context]: The patient is diligent about taking his Imitrex. | The doctor asks if there are any issues with migraines. | The patient denies any issues with migraines. | The doctor transitions to discu",
+      "gold": "{\"relevant\": true, \"detail_list\": [{\"type\": \"question\", \"summary\": \"The doctor asks if the patient is staying hydrated.\", \"eval_only\": {\"linked_agenda_item_id\": \"line_0022\", \"first_mention\": true, \"resolution_status\": \"mentioned\", \"clinical_category\": \"pmh\"}}]}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"question\", \"summary\": \"staying hydrated\"}]}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": true
+    },
+    {
+      "i": 166,
+      "input": "[Context]: The doctor asks if there are any issues with migraines. | The patient denies any issues with migraines. | The doctor transitions to discussing the patient's acid reflux. | The patient repor",
+      "gold": "{\"relevant\": true, \"detail_list\": [{\"type\": \"detail\", \"summary\": \"The patient confirms he is staying hydrated.\", \"eval_only\": {\"linked_agenda_item_id\": \"line_0022\", \"first_mention\": true, \"resolution_status\": \"mentioned\", \"clinical_category\": \"pmh\"}}]}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"social_history\", \"summary\": \"Patient reports staying hydrated\"}}",
+      "parse_ok": false,
+      "rel_correct": false,
+      "type_correct": false
+    },
+    {
+      "i": 167,
+      "input": "[Context]: The patient denies any issues with migraines. | The doctor transitions to discussing the patient's acid reflux. | The patient reports dietary changes due to pain, including increased fast f",
+      "gold": "{\"relevant\": true, \"detail_list\": [{\"type\": \"question\", \"summary\": \"The doctor asks about other symptoms including muscle aches and chest pain.\", \"eval_only\": {\"linked_agenda_item_id\": \"line_0004\", \"first_mention\": true, \"resolution_status\": \"mentioned\", \"clinical_category\": \"ros\"}}]}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"symptom\", \"summary\": \"back pain, dizziness, blood in urine, muscle aches, chest pain, body aches\"}]}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": false
+    },
+    {
+      "i": 168,
+      "input": "[Context]: The doctor transitions to discussing the patient's acid reflux. | The patient reports dietary changes due to pain, including increased fast food and takeout. | The doctor asks if the patien",
+      "gold": "{\"relevant\": true, \"detail_list\": [{\"type\": \"detail\", \"summary\": \"The patient reports body aches from favoring his back.\", \"eval_only\": {\"linked_agenda_item_id\": \"line_0004\", \"first_mention\": true, \"resolution_status\": \"mentioned\", \"clinical_category\": \"ros\"}}]}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"symptom\", \"summary\": \"Muscle aches and back pain\"}]}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": false
+    },
+    {
+      "i": 169,
+      "input": "[Context]: The patient reports dietary changes due to pain, including increased fast food and takeout. | The doctor asks if the patient is staying hydrated. | The patient confirms he is staying hydrat",
+      "gold": "{\"relevant\": true, \"detail_list\": [{\"type\": \"detail\", \"summary\": \"The patient's blood pressure is elevated.\", \"eval_only\": {\"linked_agenda_item_id\": \"line_0004\", \"first_mention\": true, \"resolution_status\": \"mentioned\", \"clinical_category\": \"physical_exam\"}}]}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"medication\", \"summary\": \"Doctor mentions pain as a possible cause of high blood pressure\"}, {\"type\": \"vital_sign\", \"summary\": \"Doctor checks blood pressure and finds it's a little high\"}]}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": false
+    },
+    {
+      "i": 170,
+      "input": "[Context]: The doctor asks if the patient is staying hydrated. | The patient confirms he is staying hydrated. | The doctor asks about other symptoms including muscle aches and chest pain. | The patien",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"social_history\", \"summary\": \"Patient confirms hydration status\"}]}",
+      "parse_ok": true,
+      "rel_correct": false,
+      "type_correct": false
+    },
+    {
+      "i": 171,
+      "input": "[Context]: The doctor asks if the patient is staying hydrated. | The patient confirms he is staying hydrated. | The doctor asks about other symptoms including muscle aches and chest pain. | The patien",
+      "gold": "{\"relevant\": true, \"detail_list\": [{\"type\": \"detail\", \"summary\": \"Physical exam reveals CVA tenderness on the right side.\", \"eval_only\": {\"linked_agenda_item_id\": \"line_0004\", \"first_mention\": true, \"resolution_status\": \"mentioned\", \"clinical_category\": \"physical_exam\"}}]}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"physical_exam\", \"summary\": \"tenderness on the right-hand side, CDA tenderness\"}]}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": false
+    },
+    {
+      "i": 172,
+      "input": "[Context]: The patient confirms he is staying hydrated. | The doctor asks about other symptoms including muscle aches and chest pain. | The patient reports body aches from favoring his back. | The pat",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"question_unanswered\", \"summary\": \"Patient confirms understanding of hydration and reports additional symptoms\"}]}",
+      "parse_ok": true,
+      "rel_correct": false,
+      "type_correct": false
+    },
+    {
+      "i": 173,
+      "input": "[Context]: The patient confirms he is staying hydrated. | The doctor asks about other symptoms including muscle aches and chest pain. | The patient reports body aches from favoring his back. | The pat",
+      "gold": "{\"relevant\": true, \"detail_list\": [{\"type\": \"detail\", \"summary\": \"Physical exam reveals right lower quadrant abdominal tenderness; heart and lungs are clear.\", \"eval_only\": {\"linked_agenda_item_id\": \"line_0004\", \"first_mention\": true, \"resolution_status\": \"mentioned\", \"clinical_category\": \"physical_",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"agenda_item\", \"summary\": \"Abdominal tenderness in the right lower quadrant, CVA tenderness on the right side, elevated blood pressure, and muscle aches\"}]}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": false
+    },
+    {
+      "i": 174,
+      "input": "[Context]: The doctor asks about other symptoms including muscle aches and chest pain. | The patient reports body aches from favoring his back. | The patient's blood pressure is elevated. | Physical e",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": false}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": true
+    },
+    {
+      "i": 175,
+      "input": "[Context]: The doctor asks about other symptoms including muscle aches and chest pain. | The patient reports body aches from favoring his back. | The patient's blood pressure is elevated. | Physical e",
+      "gold": "{\"relevant\": true, \"detail_list\": [{\"type\": \"detail\", \"summary\": \"Creatinine level is slightly elevated, suggesting possible obstruction.\", \"eval_only\": {\"linked_agenda_item_id\": \"line_0004\", \"first_mention\": true, \"resolution_status\": \"mentioned\", \"clinical_category\": \"assessment\"}}]}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"medication\", \"summary\": \"creatinine level slightly elevated, suggesting possible kidney stone obstruction\"}]}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": false
+    },
+    {
+      "i": 176,
+      "input": "[Context]: The patient reports body aches from favoring his back. | The patient's blood pressure is elevated. | Physical exam reveals CVA tenderness on the right side. | Physical exam reveals right lo",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"question\", \"summary\": \"Patient's response to physical exam findings\"}]}",
+      "parse_ok": true,
+      "rel_correct": false,
+      "type_correct": false
+    },
+    {
+      "i": 177,
+      "input": "[Context]: The patient reports body aches from favoring his back. | The patient's blood pressure is elevated. | Physical exam reveals CVA tenderness on the right side. | Physical exam reveals right lo",
+      "gold": "{\"relevant\": true, \"detail_list\": [{\"type\": \"detail\", \"summary\": \"Abdominal x-ray shows a possible kidney stone.\", \"eval_only\": {\"linked_agenda_item_id\": \"line_0004\", \"first_mention\": true, \"resolution_status\": \"mentioned\", \"clinical_category\": \"assessment\"}}]}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"medication\", \"summary\": \"Kidney stone suspected\"}, {\"type\": \"agenda_item\", \"summary\": \"Abdominal x-rays to confirm kidney stone diagnosis\"}]}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": false
+    },
+    {
+      "i": 178,
+      "input": "[Context]: The patient's blood pressure is elevated. | Physical exam reveals CVA tenderness on the right side. | Physical exam reveals right lower quadrant abdominal tenderness; heart and lungs are cl",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": false}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": true
+    },
+    {
+      "i": 179,
+      "input": "[Context]: The patient's blood pressure is elevated. | Physical exam reveals CVA tenderness on the right side. | Physical exam reveals right lower quadrant abdominal tenderness; heart and lungs are cl",
+      "gold": "{\"relevant\": true, \"detail_list\": [{\"type\": \"follow_up\", \"summary\": \"The doctor orders a CT scan of the abdomen and pelvis without contrast.\", \"eval_only\": {\"linked_agenda_item_id\": \"line_0004\", \"first_mention\": true, \"resolution_status\": \"mentioned\", \"clinical_category\": \"plan\"}}]}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"medication\", \"summary\": \"Kidney stone recurrence suspected, CT scan of abdomen and pelvis ordered without contrast.\"}]}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": false
+    },
+    {
+      "i": 180,
+      "input": "[Context]: Physical exam reveals CVA tenderness on the right side. | Physical exam reveals right lower quadrant abdominal tenderness; heart and lungs are clear. | Creatinine level is slightly elevated",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"question\", \"summary\": \"Patient's response to physical exam findings\"}}",
+      "parse_ok": false,
+      "rel_correct": true,
+      "type_correct": true
+    },
+    {
+      "i": 181,
+      "input": "[Context]: Physical exam reveals CVA tenderness on the right side. | Physical exam reveals right lower quadrant abdominal tenderness; heart and lungs are clear. | Creatinine level is slightly elevated",
+      "gold": "{\"relevant\": true, \"detail_list\": [{\"type\": \"medication\", \"summary\": \"The doctor prescribes Ultram 50 mg every 6 hours as needed for pain.\", \"eval_only\": {\"linked_agenda_item_id\": \"line_0004\", \"first_mention\": true, \"resolution_status\": \"mentioned\", \"clinical_category\": \"plan\"}}]}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"medication\", \"summary\": \"Ultram 50mg every 6 hours as needed for pain\"}]}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": true
+    },
+    {
+      "i": 182,
+      "input": "[Context]: Physical exam reveals right lower quadrant abdominal tenderness; heart and lungs are clear. | Creatinine level is slightly elevated, suggesting possible obstruction. | Abdominal x-ray shows",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": false}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": true
+    },
+    {
+      "i": 183,
+      "input": "[Context]: Physical exam reveals right lower quadrant abdominal tenderness; heart and lungs are clear. | Creatinine level is slightly elevated, suggesting possible obstruction. | Abdominal x-ray shows",
+      "gold": "{\"relevant\": true, \"detail_list\": [{\"type\": \"follow_up\", \"summary\": \"The doctor advises the patient to stay hydrated and strain his urine.\", \"eval_only\": {\"linked_agenda_item_id\": \"line_0004\", \"first_mention\": true, \"resolution_status\": \"mentioned\", \"clinical_category\": \"plan\"}}]}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"agenda_item\", \"summary\": \"Ultram 50 mg every 6 hours as needed for pain and fluid management and straining of urine to help pass the kidney stone\"}]}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": false
+    },
+    {
+      "i": 184,
+      "input": "[Context]: Creatinine level is slightly elevated, suggesting possible obstruction. | Abdominal x-ray shows a possible kidney stone. | The doctor orders a CT scan of the abdomen and pelvis without cont",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": false}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": true
+    },
+    {
+      "i": 185,
+      "input": "[Context]: Creatinine level is slightly elevated, suggesting possible obstruction. | Abdominal x-ray shows a possible kidney stone. | The doctor orders a CT scan of the abdomen and pelvis without cont",
+      "gold": "{\"relevant\": true, \"detail_list\": [{\"type\": \"detail\", \"summary\": \"The doctor instructs the patient to continue Imitrex for migraines and Protonix 40 mg daily for reflux.\", \"eval_only\": {\"linked_agenda_item_id\": \"line_0004\", \"first_mention\": true, \"resolution_status\": \"mentioned\", \"clinical_category\"",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"medication\", \"summary\": \"Ultram and Imitrex for migraines, Protonix for reflux\"}]}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": false
+    },
+    {
+      "i": 186,
+      "input": "[Context]: Abdominal x-ray shows a possible kidney stone. | The doctor orders a CT scan of the abdomen and pelvis without contrast. | The doctor prescribes Ultram 50 mg every 6 hours as needed for pai",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"medication\", \"summary\": \"Ultram refill needed\"}]}",
+      "parse_ok": true,
+      "rel_correct": false,
+      "type_correct": false
+    },
+    {
+      "i": 187,
+      "input": "[Context]: Abdominal x-ray shows a possible kidney stone. | The doctor orders a CT scan of the abdomen and pelvis without contrast. | The doctor prescribes Ultram 50 mg every 6 hours as needed for pai",
+      "gold": "{\"relevant\": true, \"detail_list\": [{\"type\": \"medication\", \"summary\": \"The doctor orders a refill of Protonix 40 mg daily.\", \"eval_only\": {\"linked_agenda_item_id\": \"line_0022\", \"first_mention\": true, \"resolution_status\": \"mentioned\", \"clinical_category\": \"plan\"}}]}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"medication\", \"summary\": \"Ultram 50 mg every 6 hours as needed for pain, Protonix 40 mg daily for reflux, and Imitrex for migraines\"}]}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": true
+    },
+    {
+      "i": 188,
+      "input": "[Context]: The doctor orders a CT scan of the abdomen and pelvis without contrast. | The doctor prescribes Ultram 50 mg every 6 hours as needed for pain. | The doctor advises the patient to stay hydra",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": false}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": true
+    },
+    {
+      "i": 189,
+      "input": "[Context]: The doctor orders a CT scan of the abdomen and pelvis without contrast. | The doctor prescribes Ultram 50 mg every 6 hours as needed for pain. | The doctor advises the patient to stay hydra",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"follow_up\", \"summary\": \"Follow-up contact information for pain management\"}]}",
+      "parse_ok": true,
+      "rel_correct": false,
+      "type_correct": false
+    },
+    {
+      "i": 190,
+      "input": "[Context]: The doctor orders a CT scan of the abdomen and pelvis without contrast. | The doctor prescribes Ultram 50 mg every 6 hours as needed for pain. | The doctor advises the patient to stay hydra",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": false}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": true
+    },
+    {
+      "i": 191,
+      "input": "[Context]: The doctor orders a CT scan of the abdomen and pelvis without contrast. | The doctor prescribes Ultram 50 mg every 6 hours as needed for pain. | The doctor advises the patient to stay hydra",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": false}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": true
+    },
+    {
+      "i": 192,
+      "input": "[Context]: The doctor orders a CT scan of the abdomen and pelvis without contrast. | The doctor prescribes Ultram 50 mg every 6 hours as needed for pain. | The doctor advises the patient to stay hydra",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": false}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": true
+    },
+    {
+      "i": 193,
+      "input": "[Context]: The doctor orders a CT scan of the abdomen and pelvis without contrast. | The doctor prescribes Ultram 50 mg every 6 hours as needed for pain. | The doctor advises the patient to stay hydra",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": false}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": true
+    },
+    {
+      "i": 194,
+      "input": "[Context]: Start of visit\n[Utterance]: [Doctor] hi , james , how are you ?",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": false}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": true
+    },
+    {
+      "i": 195,
+      "input": "[Context]: Start of visit\n[Utterance]: [Patient] hey , good to see you .",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"social_history\", \"summary\": \"Patient's greeting\"}}",
+      "parse_ok": false,
+      "rel_correct": true,
+      "type_correct": true
+    },
+    {
+      "i": 196,
+      "input": "[Context]: Start of visit\n[Utterance]: [Doctor] it's good to see you , too . so , i know the nurse told you about dax .",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"social_history\", \"summary\": \"Patient discusses previous conversation with nurse about DAX\"}]}",
+      "parse_ok": true,
+      "rel_correct": false,
+      "type_correct": false
+    },
+    {
+      "i": 197,
+      "input": "[Context]: Start of visit\n[Utterance]: [Patient] mm-hmm .",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": false}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": true
+    },
+    {
+      "i": 198,
+      "input": "[Context]: Start of visit\n[Utterance]: [Doctor] i'd like to tell dax a little bit about you .",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": true, \"detail_list\": [{\"type\": \"social_history\", \"summary\": \"Patient sharing information about themselves\"}]}",
+      "parse_ok": true,
+      "rel_correct": false,
+      "type_correct": false
+    },
+    {
+      "i": 199,
+      "input": "[Context]: Start of visit\n[Utterance]: [Patient] sure .",
+      "gold": "{\"relevant\": false}",
+      "pred_raw": "{\"relevant\": false}",
+      "parse_ok": true,
+      "rel_correct": true,
+      "type_correct": true
+    }
+  ]
+}

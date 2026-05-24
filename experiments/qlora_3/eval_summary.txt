@@ -1,0 +1,414 @@
+===== VALID (D2N068~087) =====
+Loaded 1012 eval examples
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█ | 1/2 [00:00<00:00,  1.19it/s]Loading checkpoint shards: 100%|██| 2/2 [00:01<00:00,  1.75it/s]Loading checkpoint shards: 100%|██| 2/2 [00:01<00:00,  1.63it/s]
+/usr/local/lib/python3.11/dist-packages/transformers/generation/configuration_utils.py:628: UserWarning: `do_sample` is set to `False`. However, `temperature` is set to `0.0` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `temperature`.
+  warnings.warn(
+/usr/local/lib/python3.11/dist-packages/transformers/generation/configuration_utils.py:633: UserWarning: `do_sample` is set to `False`. However, `top_p` is set to `0.9` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `top_p`.
+  warnings.warn(
+  50/1012 done
+  100/1012 done
+  150/1012 done
+  200/1012 done
+  250/1012 done
+  300/1012 done
+  350/1012 done
+  400/1012 done
+  450/1012 done
+  500/1012 done
+  550/1012 done
+  600/1012 done
+  650/1012 done
+  700/1012 done
+  750/1012 done
+  800/1012 done
+  850/1012 done
+  900/1012 done
+  950/1012 done
+  1000/1012 done
+{
+  "n_examples": 1012,
+  "json_parse_rate": 1.0,
+  "relevance_accuracy": 0.8675889328063241,
+  "type_macro_f1": 0.6326460978718008,
+  "type_per_class": {
+    "agenda_item": {
+      "precision": 0.7619047619047619,
+      "recall": 0.5161290322580645,
+      "f1": 0.6153846153846153,
+      "support": 31
+    },
+    "detail": {
+      "precision": 0.8153846153846154,
+      "recall": 0.7709090909090909,
+      "f1": 0.7925233644859814,
+      "support": 275
+    },
+    "medication": {
+      "precision": 0.6363636363636364,
+      "recall": 0.7777777777777778,
+      "f1": 0.7000000000000001,
+      "support": 9
+    },
+    "social_history": {
+      "precision": 0.8888888888888888,
+      "recall": 0.43243243243243246,
+      "f1": 0.5818181818181818,
+      "support": 37
+    },
+    "follow_up": {
+      "precision": 0.7307692307692307,
+      "recall": 0.6785714285714286,
+      "f1": 0.7037037037037038,
+      "support": 28
+    },
+    "question": {
+      "precision": 0.7777777777777778,
+      "recall": 0.8289473684210527,
+      "f1": 0.802547770700637,
+      "support": 152
+    },
+    "question_unanswered": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "support": 0
+    },
+    "irrelevant": {
+      "precision": 0.8365758754863813,
+      "recall": 0.8958333333333334,
+      "f1": 0.8651911468812877,
+      "support": 480
+    }
+  },
+  "n_summary_pairs_for_bertscore": 448
+}
+
+===== TEST1 (D2N088~127) =====
+Loaded 2032 eval examples
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█ | 1/2 [00:00<00:00,  1.18it/s]Loading checkpoint shards: 100%|██| 2/2 [00:01<00:00,  1.77it/s]Loading checkpoint shards: 100%|██| 2/2 [00:01<00:00,  1.65it/s]
+/usr/local/lib/python3.11/dist-packages/transformers/generation/configuration_utils.py:628: UserWarning: `do_sample` is set to `False`. However, `temperature` is set to `0.0` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `temperature`.
+  warnings.warn(
+/usr/local/lib/python3.11/dist-packages/transformers/generation/configuration_utils.py:633: UserWarning: `do_sample` is set to `False`. However, `top_p` is set to `0.9` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `top_p`.
+  warnings.warn(
+  50/2032 done
+  100/2032 done
+  150/2032 done
+  200/2032 done
+  250/2032 done
+  300/2032 done
+  350/2032 done
+  400/2032 done
+  450/2032 done
+  500/2032 done
+  550/2032 done
+  600/2032 done
+  650/2032 done
+  700/2032 done
+  750/2032 done
+  800/2032 done
+  850/2032 done
+  900/2032 done
+  950/2032 done
+  1000/2032 done
+  1050/2032 done
+  1100/2032 done
+  1150/2032 done
+  1200/2032 done
+  1250/2032 done
+  1300/2032 done
+  1350/2032 done
+  1400/2032 done
+  1450/2032 done
+  1500/2032 done
+  1550/2032 done
+  1600/2032 done
+  1650/2032 done
+  1700/2032 done
+  1750/2032 done
+  1800/2032 done
+  1850/2032 done
+  1900/2032 done
+  1950/2032 done
+  2000/2032 done
+{
+  "n_examples": 2032,
+  "json_parse_rate": 0.9985236220472441,
+  "relevance_accuracy": 0.8671259842519685,
+  "type_macro_f1": 0.6419887787494137,
+  "type_per_class": {
+    "agenda_item": {
+      "precision": 0.675,
+      "recall": 0.54,
+      "f1": 0.6000000000000001,
+      "support": 50
+    },
+    "detail": {
+      "precision": 0.782051282051282,
+      "recall": 0.8211538461538461,
+      "f1": 0.8011257035647279,
+      "support": 520
+    },
+    "medication": {
+      "precision": 0.7058823529411765,
+      "recall": 0.5454545454545454,
+      "f1": 0.6153846153846153,
+      "support": 22
+    },
+    "social_history": {
+      "precision": 0.82,
+      "recall": 0.6119402985074627,
+      "f1": 0.7008547008547008,
+      "support": 67
+    },
+    "follow_up": {
+      "precision": 0.7,
+      "recall": 0.7903225806451613,
+      "f1": 0.7424242424242423,
+      "support": 62
+    },
+    "question": {
+      "precision": 0.83125,
+      "recall": 0.7964071856287425,
+      "f1": 0.8134556574923548,
+      "support": 334
+    },
+    "question_unanswered": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "support": 0
+    },
+    "irrelevant": {
+      "precision": 0.8574317492416582,
+      "recall": 0.8679631525076765,
+      "f1": 0.8626653102746692,
+      "support": 977
+    }
+  },
+  "n_summary_pairs_for_bertscore": 914
+}
+
+===== TEST2 (D2N128~167) =====
+Loaded 2225 eval examples
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█ | 1/2 [00:00<00:00,  1.19it/s]Loading checkpoint shards: 100%|██| 2/2 [00:01<00:00,  1.72it/s]Loading checkpoint shards: 100%|██| 2/2 [00:01<00:00,  1.61it/s]
+/usr/local/lib/python3.11/dist-packages/transformers/generation/configuration_utils.py:628: UserWarning: `do_sample` is set to `False`. However, `temperature` is set to `0.0` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `temperature`.
+  warnings.warn(
+/usr/local/lib/python3.11/dist-packages/transformers/generation/configuration_utils.py:633: UserWarning: `do_sample` is set to `False`. However, `top_p` is set to `0.9` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `top_p`.
+  warnings.warn(
+  50/2225 done
+  100/2225 done
+  150/2225 done
+  200/2225 done
+  250/2225 done
+  300/2225 done
+  350/2225 done
+  400/2225 done
+  450/2225 done
+  500/2225 done
+  550/2225 done
+  600/2225 done
+  650/2225 done
+  700/2225 done
+  750/2225 done
+  800/2225 done
+  850/2225 done
+  900/2225 done
+  950/2225 done
+  1000/2225 done
+  1050/2225 done
+  1100/2225 done
+  1150/2225 done
+  1200/2225 done
+  1250/2225 done
+  1300/2225 done
+  1350/2225 done
+  1400/2225 done
+  1450/2225 done
+  1500/2225 done
+  1550/2225 done
+  1600/2225 done
+  1650/2225 done
+  1700/2225 done
+  1750/2225 done
+  1800/2225 done
+  1850/2225 done
+  1900/2225 done
+  1950/2225 done
+  2000/2225 done
+  2050/2225 done
+  2100/2225 done
+  2150/2225 done
+  2200/2225 done
+{
+  "n_examples": 2225,
+  "json_parse_rate": 0.9995505617977528,
+  "relevance_accuracy": 0.8732584269662922,
+  "type_macro_f1": 0.6542485438833145,
+  "type_per_class": {
+    "agenda_item": {
+      "precision": 0.7435897435897436,
+      "recall": 0.46774193548387094,
+      "f1": 0.5742574257425742,
+      "support": 62
+    },
+    "detail": {
+      "precision": 0.8228782287822878,
+      "recall": 0.7770034843205574,
+      "f1": 0.7992831541218638,
+      "support": 574
+    },
+    "medication": {
+      "precision": 0.7894736842105263,
+      "recall": 0.6818181818181818,
+      "f1": 0.7317073170731707,
+      "support": 22
+    },
+    "social_history": {
+      "precision": 0.7608695652173914,
+      "recall": 0.6730769230769231,
+      "f1": 0.7142857142857143,
+      "support": 52
+    },
+    "follow_up": {
+      "precision": 0.6470588235294118,
+      "recall": 0.8048780487804879,
+      "f1": 0.717391304347826,
+      "support": 82
+    },
+    "question": {
+      "precision": 0.7911392405063291,
+      "recall": 0.8503401360544217,
+      "f1": 0.8196721311475409,
+      "support": 294
+    },
+    "question_unanswered": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "support": 0
+    },
+    "irrelevant": {
+      "precision": 0.8690783807062877,
+      "recall": 0.8858647936786654,
+      "f1": 0.8773913043478262,
+      "support": 1139
+    }
+  },
+  "n_summary_pairs_for_bertscore": 934
+}
+
+===== TEST3 (D2N168~207) =====
+Loaded 2298 eval examples
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█ | 1/2 [00:00<00:00,  1.13it/s]Loading checkpoint shards: 100%|██| 2/2 [00:01<00:00,  1.74it/s]Loading checkpoint shards: 100%|██| 2/2 [00:01<00:00,  1.61it/s]
+/usr/local/lib/python3.11/dist-packages/transformers/generation/configuration_utils.py:628: UserWarning: `do_sample` is set to `False`. However, `temperature` is set to `0.0` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `temperature`.
+  warnings.warn(
+/usr/local/lib/python3.11/dist-packages/transformers/generation/configuration_utils.py:633: UserWarning: `do_sample` is set to `False`. However, `top_p` is set to `0.9` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `top_p`.
+  warnings.warn(
+  50/2298 done
+  100/2298 done
+  150/2298 done
+  200/2298 done
+  250/2298 done
+  300/2298 done
+  350/2298 done
+  400/2298 done
+  450/2298 done
+  500/2298 done
+  550/2298 done
+  600/2298 done
+  650/2298 done
+  700/2298 done
+  750/2298 done
+  800/2298 done
+  850/2298 done
+  900/2298 done
+  950/2298 done
+  1000/2298 done
+  1050/2298 done
+  1100/2298 done
+  1150/2298 done
+  1200/2298 done
+  1250/2298 done
+  1300/2298 done
+  1350/2298 done
+  1400/2298 done
+  1450/2298 done
+  1500/2298 done
+  1550/2298 done
+  1600/2298 done
+  1650/2298 done
+  1700/2298 done
+  1750/2298 done
+  1800/2298 done
+  1850/2298 done
+  1900/2298 done
+  1950/2298 done
+  2000/2298 done
+  2050/2298 done
+  2100/2298 done
+  2150/2298 done
+  2200/2298 done
+  2250/2298 done
+{
+  "n_examples": 2298,
+  "json_parse_rate": 0.9995648389904265,
+  "relevance_accuracy": 0.8781549173194082,
+  "type_macro_f1": 0.6371948938994124,
+  "type_per_class": {
+    "agenda_item": {
+      "precision": 0.7446808510638298,
+      "recall": 0.5645161290322581,
+      "f1": 0.6422018348623854,
+      "support": 62
+    },
+    "detail": {
+      "precision": 0.8134991119005328,
+      "recall": 0.8372943327239488,
+      "f1": 0.8252252252252252,
+      "support": 547
+    },
+    "medication": {
+      "precision": 0.7222222222222222,
+      "recall": 0.3939393939393939,
+      "f1": 0.5098039215686274,
+      "support": 33
+    },
+    "social_history": {
+      "precision": 0.8837209302325582,
+      "recall": 0.5846153846153846,
+      "f1": 0.7037037037037038,
+      "support": 65
+    },
+    "follow_up": {
+      "precision": 0.7012987012987013,
+      "recall": 0.7941176470588235,
+      "f1": 0.7448275862068966,
+      "support": 68
+    },
+    "question": {
+      "precision": 0.7514970059880239,
+      "recall": 0.8256578947368421,
+      "f1": 0.7868338557993731,
+      "support": 304
+    },
+    "question_unanswered": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "support": 0
+    },
+    "irrelevant": {
+      "precision": 0.8864197530864197,
+      "recall": 0.8835110746513536,
+      "f1": 0.8849630238290879,
+      "support": 1219
+    }
+  },
+  "n_summary_pairs_for_bertscore": 941
+}
+
+===== ALL DONE =====
+-rw-rw-rw- 1 root root 1126549 May  5 06:25 eval_report_test1.json
+-rw-rw-rw- 1 root root 1217948 May  5 07:30 eval_report_test2.json
+-rw-rw-rw- 1 root root 1241617 May  5 08:33 eval_report_test3.json
+-rw-rw-rw- 1 root root  557421 May  5 05:25 eval_report_valid.json

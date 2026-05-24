@@ -1,0 +1,60 @@
+=== eval_report_test1.json ===
+  parse_rate:      0.9985
+  relevance_acc:   0.8671
+  type_macro_f1:   0.6420
+
+  Per-class F1:
+    agenda_item               f1=0.600  support=50
+    detail                    f1=0.801  support=520
+    medication                f1=0.615  support=22
+    social_history            f1=0.701  support=67
+    follow_up                 f1=0.742  support=62
+    question                  f1=0.813  support=334
+    question_unanswered       f1=0.000  support=0
+    irrelevant                f1=0.863  support=977
+
+=== eval_report_test2.json ===
+  parse_rate:      0.9996
+  relevance_acc:   0.8733
+  type_macro_f1:   0.6542
+
+  Per-class F1:
+    agenda_item               f1=0.574  support=62
+    detail                    f1=0.799  support=574
+    medication                f1=0.732  support=22
+    social_history            f1=0.714  support=52
+    follow_up                 f1=0.717  support=82
+    question                  f1=0.820  support=294
+    question_unanswered       f1=0.000  support=0
+    irrelevant                f1=0.877  support=1139
+
+=== eval_report_test3.json ===
+  parse_rate:      0.9996
+  relevance_acc:   0.8782
+  type_macro_f1:   0.6372
+
+  Per-class F1:
+    agenda_item               f1=0.642  support=62
+    detail                    f1=0.825  support=547
+    medication                f1=0.510  support=33
+    social_history            f1=0.704  support=65
+    follow_up                 f1=0.745  support=68
+    question                  f1=0.787  support=304
+    question_unanswered       f1=0.000  support=0
+    irrelevant                f1=0.885  support=1219
+
+=== eval_report_valid.json ===
+  parse_rate:      1.0000
+  relevance_acc:   0.8676
+  type_macro_f1:   0.6326
+
+  Per-class F1:
+    agenda_item               f1=0.615  support=31
+    detail                    f1=0.793  support=275
+    medication                f1=0.700  support=9
+    social_history            f1=0.582  support=37
+    follow_up                 f1=0.704  support=28
+    question                  f1=0.803  support=152
+    question_unanswered       f1=0.000  support=0
+    irrelevant                f1=0.865  support=480
+
