@@ -179,8 +179,8 @@ What was actually run (`tequila/.../eval_qlora.py`): JSON parse rate, relevance 
 
 ## 10. Additional facts (in code/data, not in spec v4)
 
-1. **Two-repo split.** `atlas` (tria-lab/atlas, private) holds code + data; `tequila` (Bias92/tequila, public) holds the QLoRA training/eval artifacts (`experiments/qlora_3` + `experiments/archive`). Not mentioned in spec.
-2. **`experiments/archive/` = prior failed runs kept as evidence.** `train_qlora_v1_iid.py`: used `DataCollatorForCompletionOnlyLM`, trained/eval on `data/train.jsonl`/`data/eval.jsonl` (IID split → leakage). `train_qlora_v2_mask_broken.py`: used plain `DataCollatorForLanguageModeling` with **no completion mask** (loss on prompt tokens too — "mask broken"). `qlora_3/train_qlora.py` is the corrected version: manual `-100` masking in `build_chat` + custom `completion_collator` + conversation-level holdout (`challenge_data/train` vs `valid`). (Source: `tequila/experiments/archive/*` headers + diff vs `qlora_3`.)
+1. **Two-repo split.** `atlas` (tria-lab/atlas, private) holds code + data; `tequila` (Bias92/tequila, public) holds the current QLoRA training/eval artifacts (`experiments/qlora_3`) and lightweight experiment notes. Not mentioned in spec.
+2. **Failed QLoRA v1/v2 folders were removed from tequila.** They had been local historical artifacts only and were not valid current runs. `qlora_3/train_qlora.py` is the corrected version: manual `-100` masking in `build_chat` + custom `completion_collator` + conversation-level holdout (`challenge_data/train` vs `valid`).
 3. **`question` type is pervasive**, not just in prompts: `policy.TYPE_TO_INDEX` (7 entries), `harness.LLMOutput.type` docstring, `metrics.ALL_CLASSES` (8-class), `eval_qlora.VALID_TYPES`, `check_types.ALL_TYPES`. Spec's 6-type schema is superseded everywhere in code.
 4. **`check_types.py`** (atlas root, Korean comments) — annotation type-frequency + ambiguity/edge-case auditor over `detail_list`. A data-QA tool with no spec counterpart.
 5. **`tsne.py` / `tsne.png`** — summary-embedding visualization. Despite the name it uses **UMAP** (not t-SNE), all-MiniLM-L6-v2, colored by the 7 types. Gitignored (`atlas/.gitignore`: `.DS_Store, tsne.py, tsne.png`).
@@ -188,7 +188,7 @@ What was actually run (`tequila/.../eval_qlora.py`): JSON parse rate, relevance 
 7. **Eval is 8-class with a dead class.** `question_unanswered` has support 0 in all four held-out splits — the trained model and the gold annotations never use it in eval, so its F1 is 0 and the headline 8-class macro-F1 (0.63–0.65) understates per-class quality vs. the 7-class figure (0.733).
 8. **Spec divergence is self-documented** inside `atlas/prompts.py:L29-37` ("[MODIFIED v3.1]" list) and `train_qlora.py:L99-101` (lr override vs "Spec Phase 2"). The codebase acknowledges it has moved off spec v4 in-line.
 9. **`config.py` deprecation note**: `BufferConfig.max_context_items` is marked DEPRECATED/unused by the harness (kept only for `annotation_pipeline --mode format` compat) — but `annotation_pipeline.py` does not exist; only `annotation_gemini.py` does.
-10. **atlas git history** shows the divergence direction: recent commits `Update question_unanswered policy`, `Merge detail_list if divided`, `Fix docs into merged detail_list`, `Update eval_baselines.py data paths to challenge_data layout` — i.e. active movement toward detail_list + challenge_data layout, away from spec v4. (Source: `git -C ~/Desktop/atlas log --oneline`.) `tequila` has no commit history (no commits on `main`).
+10. **atlas git history** shows the divergence direction: recent commits `Update question_unanswered policy`, `Merge detail_list if divided`, `Fix docs into merged detail_list`, `Update eval_baselines.py data paths to challenge_data layout` — i.e. active movement toward detail_list + challenge_data layout, away from spec v4. (Source: `git -C ~/Desktop/atlas log --oneline`.)
 
 ---
 

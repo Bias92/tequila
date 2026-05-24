@@ -41,22 +41,9 @@ Included:
 
 ## Archive
 
-### `archive/atlas_qlora_1/`
-
-Failed / obsolete QLoRA v1 code bundle, excluding local data and model
-artifacts. Kept only for provenance. This run used an IID train/eval split, so
-its evaluation is not a valid held-out result.
-
-### `archive/atlas_qlora_2/`
-
-Failed / obsolete QLoRA v2 code bundle, excluding local data and model
-artifacts. Kept only for provenance. This run used a broken masking setup, so
-it should not be treated as a current training recipe.
-
-### `archive/atlas_qlora_1_results/`
-
-Old v1 comparison reports. Kept for historical comparison only; not the current
-run of record.
+Failed QLoRA v1/v2 run folders were intentionally removed from this repo to
+avoid confusing them with the current run of record. Keep only current `qlora_3`
+artifacts here.
 
 ### `archive/atlas_src_updated/`
 
@@ -65,11 +52,3 @@ Snapshot of ATLAS `src` files used during previous QLoRA work.
 ### `archive/handoffs/` and `archive/atlas_handoff_12/`
 
 Handoff notes from previous experiment/debugging sessions.
-
-### `archive/train_qlora_v1_iid.py`
-
-Archived failed IID training script.
-
-### `archive/train_qlora_v2_mask_broken.py`
-
-Archived failed v2 training script kept for divergence/debug context.
