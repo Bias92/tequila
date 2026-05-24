@@ -43,11 +43,20 @@ Included:
 
 ### `archive/atlas_qlora_1/`
 
-Earlier QLoRA v1 code bundle, excluding local data and model artifacts.
+Failed / obsolete QLoRA v1 code bundle, excluding local data and model
+artifacts. Kept only for provenance. This run used an IID train/eval split, so
+its evaluation is not a valid held-out result.
 
 ### `archive/atlas_qlora_2/`
 
-Earlier QLoRA v2 code bundle, excluding local data and model artifacts.
+Failed / obsolete QLoRA v2 code bundle, excluding local data and model
+artifacts. Kept only for provenance. This run used a broken masking setup, so
+it should not be treated as a current training recipe.
+
+### `archive/atlas_qlora_1_results/`
+
+Old v1 comparison reports. Kept for historical comparison only; not the current
+run of record.
 
 ### `archive/atlas_src_updated/`
 
@@ -59,9 +68,8 @@ Handoff notes from previous experiment/debugging sessions.
 
 ### `archive/train_qlora_v1_iid.py`
 
-Archived IID training script.
+Archived failed IID training script.
 
 ### `archive/train_qlora_v2_mask_broken.py`
 
-Archived v2 training script kept for divergence/debug context.
-
+Archived failed v2 training script kept for divergence/debug context.
