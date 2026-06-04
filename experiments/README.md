@@ -37,6 +37,8 @@ Included:
 - lexical C2 prototype
 - hybrid raw+embedding C2 prototype
 - real ACI silver-label probes
+- broad ATLAS annotation stress test
+- dual-threshold post-hoc simulation script
 - feasibility report
 
 ## Archive
