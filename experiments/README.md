@@ -1,7 +1,7 @@
 # ATLAS Experiments
 
-This directory collects lightweight experiment code, reports, and plots copied
-from local ATLAS experiment workspaces.
+This directory keeps only the current ATLAS experiment artifacts that are still
+useful for discussion.
 
 Large model artifacts are intentionally not committed:
 
@@ -16,7 +16,8 @@ Large model artifacts are intentionally not committed:
 
 ### `qlora_3/`
 
-Main QLoRA v3 training/evaluation bundle.
+C1 Agenda LLM QLoRA v3 training/evaluation bundle. This is the only C1 training
+run kept here.
 
 Included:
 
@@ -29,28 +30,15 @@ Included:
 
 ### `solution2_probe/`
 
-Sandbox probe for the C2 question answered/unanswered tracking idea.
+C2 question answered/unanswered tracking probe.
 
 Included:
 
 - toy cases
 - lexical C2 prototype
 - hybrid raw+embedding C2 prototype
+- delayed matching C2 prototype
 - real ACI silver-label probes
 - broad ATLAS annotation stress test
-- dual-threshold post-hoc simulation script
+- LLM judge pilot script
 - feasibility report
-
-## Archive
-
-Failed QLoRA v1/v2 run folders were intentionally removed from this repo to
-avoid confusing them with the current run of record. Keep only current `qlora_3`
-artifacts here.
-
-### `archive/atlas_src_updated/`
-
-Snapshot of ATLAS `src` files used during previous QLoRA work.
-
-### `archive/handoffs/` and `archive/atlas_handoff_12/`
-
-Handoff notes from previous experiment/debugging sessions.

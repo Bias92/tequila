@@ -77,6 +77,9 @@ Known limitations:
 - `src/state_tracker_solution2_hybrid.py`
   - hybrid tracker using lexical overlap, raw short-answer handling, and
     sentence-transformer embedding similarity
+- `src/state_tracker_solution2_matching.py`
+  - delayed matching tracker that scores local question-answer edges and chooses
+    the best assignment before finalize
 - `run_probe.py`
   - toy / counterfactual cases copied or derived from ATLAS examples
 - `run_real_silver_probe.py`
@@ -86,8 +89,14 @@ Known limitations:
 - `run_broad_dual_probe.py`
   - broad stress test over `challenge_data/{aci,eval}` plus
     `src_experiment_data/*/aci`, including a dual-threshold post-hoc simulation
+- `run_matching_probe.py`
+  - broad stress test for delayed matching C2 variants
+- `run_llm_judge_baseline.py`
+  - Gemini judge pilot baseline for "just ask an LLM" comparisons
 - `REPORT_SOLUTION2_PROBE.md`
   - original report from the first sandbox run
+- `REPORT_MATCHING_PROBE.md`
+  - current report for the graph/matching-style C2 probe
 
 ## Data Paths
 
@@ -119,6 +128,7 @@ python3 run_probe.py
 python3 run_real_silver_probe.py
 python3 run_real_hybrid_probe.py
 python3 run_broad_dual_probe.py
+python3 run_matching_probe.py
 ```
 
 `run_real_hybrid_probe.py` and `run_broad_dual_probe.py` load
@@ -380,4 +390,33 @@ Still, broader ATLAS annotation stress tests suggest that C2 question tracking
 is plausible: lexical patient-question answered detection was 69.6%, while a
 hybrid semantic tracker reached 86.0% answered status at a more balanced
 threshold, with 79.0% counterfactual unanswered and 94.1% no-silver unanswered.
+```
+
+### 6. Delayed Matching Probe
+
+Command:
+
+```bash
+python3 run_matching_probe.py
+```
+
+This probe replaces immediate threshold-based closure with local
+question-answer matching. C2 first collects candidate edges between open
+questions and later utterances, then chooses the best assignment before
+finalizing unanswered questions.
+
+Key patient-question results over `all_json_annotations`:
+
+| Tracker | Setting | Answered Status | Counterfactual Unanswered | No-Silver Unanswered |
+|---|---:|---:|---:|---:|
+| hybrid raw+embedding | 0.60 | 515/599 (86.0%) | 473/599 (79.0%) | 48/51 (94.1%) |
+| matching raw | min=0.45 emb=0.45 | 555/599 (92.7%) | 492/599 (82.1%) | 48/51 (94.1%) |
+| matching no-raw | min=0.40 pen=0.05 | 528/599 (88.1%) | 525/599 (87.6%) | 51/51 (100.0%) |
+
+Current interpretation:
+
+```text
+The matching tracker is the strongest C2 direction so far. It improves the
+answered/unanswered balance because C2 no longer closes a question immediately
+at the first threshold crossing.
 ```
