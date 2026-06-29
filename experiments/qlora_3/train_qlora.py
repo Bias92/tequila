@@ -23,6 +23,7 @@ from transformers import (
     AutoModelForCausalLM,
     AutoTokenizer,
     BitsAndBytesConfig,
+    EarlyStoppingCallback,
     TrainingArguments,
 )
 from trl import SFTConfig, SFTTrainer
@@ -93,13 +94,13 @@ def main():
     ap.add_argument("--train_file", default="data/challenge_data/train/train.jsonl")
     ap.add_argument("--eval_file", default="data/challenge_data/valid/valid.jsonl")
     ap.add_argument("--output_dir", default="checkpoints/atlas-llama32-3b-qlora")
-    ap.add_argument("--lora_r", type=int, default=32)
-    ap.add_argument("--lora_alpha", type=int, default=64)
-    ap.add_argument("--lora_dropout", type=float, default=0.05)
+    ap.add_argument("--lora_r", type=int, default=16)
+    ap.add_argument("--lora_alpha", type=int, default=32)
+    ap.add_argument("--lora_dropout", type=float, default=0.1)
     ap.add_argument("--lr", type=float, default=2e-4,
                     help="QLoRA paper default. Spec Phase 2 says 5e-5; raise to 2e-4 for "
                          "small data + LoRA adapter.")
-    ap.add_argument("--epochs", type=float, default=3.0)
+    ap.add_argument("--epochs", type=float, default=2.0)
     ap.add_argument("--batch_size", type=int, default=4)
     ap.add_argument("--grad_accum", type=int, default=4)
     ap.add_argument("--max_seq_len", type=int, default=2048,
@@ -107,7 +108,9 @@ def main():
     ap.add_argument("--seed", type=int, default=42)
     ap.add_argument("--max_eval_samples", type=int, default=200,
                     help="Subsample eval each epoch — full eval is slow during training.")
-    ap.add_argument("--save_steps", type=int, default=200)
+    ap.add_argument("--save_steps", type=int, default=50,
+                    help="Eval+save cadence. Finer (50) so the best-eval checkpoint is found "
+                         "precisely — overfit onset is before 1 epoch on this data.")
     ap.add_argument("--logging_steps", type=int, default=20)
     ap.add_argument("--report_to", default="none",
                     help="'wandb' if you want logging; needs WANDB_API_KEY env.")
@@ -191,7 +194,7 @@ def main():
         learning_rate=args.lr,
         lr_scheduler_type="cosine",
         warmup_ratio=0.03,
-        weight_decay=0.0,
+        weight_decay=0.01,
         bf16=True,
         max_seq_length=args.max_seq_len,
         packing=False,                       # IMPORTANT: do not pack — completion mask relies on a single example per sequence
@@ -208,6 +211,13 @@ def main():
         seed=args.seed,
         optim="paged_adamw_8bit",
         remove_unused_columns=False,
+        # --- anti-overfit: ship the BEST (lowest eval_loss) checkpoint, not the last ---
+        # qlora_3 log showed eval_loss bottomed at ~step 200 (0.254) then rose to 0.330
+        # by step 600 while train loss fell to 0.17 — classic overfit. These three lines
+        # make Trainer restore the best-eval checkpoint at the end of training.
+        load_best_model_at_end=True,
+        metric_for_best_model="eval_loss",
+        greater_is_better=False,
     )
 
     trainer = SFTTrainer(
@@ -217,6 +227,9 @@ def main():
         eval_dataset=eval_ds,
         data_collator=collator,
         tokenizer=tokenizer,
+        # Stop once eval_loss stops improving for 2 evals (≈100 steps) — prevents
+        # burning epochs past the overfit point.
+        callbacks=[EarlyStoppingCallback(early_stopping_patience=2)],
     )
 
     trainer.train()
