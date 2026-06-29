@@ -107,7 +107,16 @@ def main():
             line += f"\n      C1-> (irrelevant)        C3 buffer={buf_n}"
         print(line)
 
-    print(f"\n{'-'*70}\nC2 final tracker state:")
+    # ---- AGENDA SUMMARY (untruncated) — for over-lump / fragmentation judgment ----
+    items = result.tracker_states[-1].get("agenda_items", [])
+    print(f"\n{'='*70}\nAGENDA SUMMARY: {len(items)} agenda item(s)")
+    for it in items:
+        print(f"  - [{it['id']}] {it['topic'][:70]}  "
+              f"(status={it['status']}; details={len(it['details'])} "
+              f"q={len(it['questions'])} meds={len(it['medications'])} "
+              f"fu={len(it['follow_ups'])} unans={len(it['unanswered'])})")
+
+    print(f"\n{'-'*70}\nC2 final tracker state (truncated json):")
     print(json.dumps(result.tracker_states[-1], indent=2, ensure_ascii=False, default=str)[:1500])
     print(f"\nmetadata: {json.dumps(result.metadata, default=str)}")
 
