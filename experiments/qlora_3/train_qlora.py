@@ -196,7 +196,7 @@ def main():
         warmup_ratio=0.03,
         weight_decay=0.01,
         bf16=True,
-        max_seq_length=args.max_seq_len,
+        max_length=args.max_seq_len,            # trl>=1.x renamed max_seq_length -> max_length
         packing=False,                       # IMPORTANT: do not pack — completion mask relies on a single example per sequence
 
         gradient_checkpointing=True,
@@ -226,7 +226,7 @@ def main():
         train_dataset=train_ds,
         eval_dataset=eval_ds,
         data_collator=collator,
-        tokenizer=tokenizer,
+        processing_class=tokenizer,             # transformers 5.x removed Trainer(tokenizer=...)
         # Stop once eval_loss stops improving for 2 evals (≈100 steps) — prevents
         # burning epochs past the overfit point.
         callbacks=[EarlyStoppingCallback(early_stopping_patience=2)],
